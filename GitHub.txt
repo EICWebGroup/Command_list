@@ -38,3 +38,8 @@ git pull URL master
 git add --all
 git commit -m "メッセージ"
 git push URL master
+
+レポジトリの作成方法
+フォルダを作成する
+git　cd でレポジトリに変えたいフォルダまで移動する
+git init
