@@ -26,3 +26,9 @@ git push origin master
 ※URLはrepositoryのURLをコピーする
 
 変更履歴：GitHubのページ上のコードの右上にあるhistoryボタンを押すと選んで見られる
+
+既存のrepositoryをアップロードする際のコマンド
+git pull URL master
+git add .
+git commit -m "メッセージ"
+git push URL master
