@@ -1,0 +1,17 @@
+ログイン
+↓
+フォルダtestを開く
+↓
+GitHubからコードをダウンロードする
+git clone URL
+↓
+php_basicに移動
+↓
+GitHubにアップロード
+git add .
+git commit -m "メッセージ"
+git push URL master
+
+※URLはrepositoryのURLをコピーする
+
+変更履歴：GitHubのページ上のコードの右上にあるhistoryボタンを押すと選んで見られる
