@@ -1,11 +1,22 @@
+putty
 ログイン
 ↓
 フォルダtestを開く
 ↓
-GitHubからコードをダウンロードする
-git clone URL
+・GitHubに新しく作る
+　git initの一連のコード
+・GitHubからコードをダウンロードする
+　git clone URL
 ↓
-php_basicに移動
+php_basic,php_basicに移動
+↓
+GitHubにアップロード
+git add .
+git commit -m "メッセージ"
+git push URL master
+
+コマンドプロンプト
+フォルダdocumentに移動してeditorで編集
 ↓
 GitHubにアップロード
 git add .
