@@ -21,7 +21,7 @@ git push URL master
 GitHubにアップロード
 git add .
 git commit -m "メッセージ"
-git push URL master
+git push origin master
 
 ※URLはrepositoryのURLをコピーする
 

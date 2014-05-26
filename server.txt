@@ -6,4 +6,4 @@ emacs ファイル名.拡張子　：ファイル作成
 ctl+x→ctl+c→y            ：保存
 rm ファイル              ：ファイル削除
 
-※winではcdがになる
+※winではcdがdirになる
