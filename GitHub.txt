@@ -27,8 +27,14 @@ git push origin master
 
 変更履歴：GitHubのページ上のコードの右上にあるhistoryボタンを押すと選んで見られる
 
-既存のrepositoryをアップロードする際のコマンド
+既存のrepositoryをアップロードする際のコマンドプロンプト
 git pull URL master
 git add .
+git commit -m "メッセージ"
+git push URL master
+
+ファイルを削除した後アップロードする際に行うコマンドプロンプト
+git pull URL master
+git add --all
 git commit -m "メッセージ"
 git push URL master
