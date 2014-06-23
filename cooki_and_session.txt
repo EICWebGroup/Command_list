@@ -1,0 +1,61 @@
+情報の送信
+ cookieやsessionを使って送信側サイトで入力した情報を受信側サイトに送る
+
+
+・cookieの場合(F12 Networkで確認できる)
+
+送信側
+
+<form action="test3.php", method="post">
+	<input type="test" name="name">
+</form>
+
+<?php
+	if(!empty($_POST["name"]))
+	{
+		setcookie("mycookie",$_POST["name"],time() + 3600); //１時間後にきれる	
+	  header("Location: http://eicforum.mydns.jp/test2.php); //受信側サイトにredirect
+		die();
+	}
+
+?>
+
+
+受信側
+
+<?php
+	echo "<h1>{$_COOKIE["mycookie"]}</h1>"
+?>
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+・SESSIONの場合(F12 Networkで確認できない)
+
+送信側
+
+<form action="test3.php", method="post">
+	<input type="test" name="name">
+</form>
+
+<?php
+
+	session_start(); //SESSIONを使うためには初めにこれを宣言しておく
+
+	if(!empty($_POST["name"]))
+	{
+		$_SESSION["name"] = $_POST["name"];
+		header("Location: http://eicforum.mydns.jp/test2.php);
+		die();
+	}
+
+?>
+
+
+受信側
+
+<?php
+	session_start();
+	echo "<h1>{$_SESSION["name"]}</h1>"
+?>
