@@ -24,8 +24,9 @@
 * show tables;
 ###テーブルの作成
 * create table "table名"(
-* ... 
-* );
+  "変数名" "型名(数値)"
+  ,,,
+  );
 ###テーブル内のカラムを表示
 * desc "table名";
 * describe "table名";
