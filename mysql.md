@@ -6,7 +6,7 @@
 
 * tableの全ての要素のうち一行目を表示する
 
-select * from "table" limit 1
+  select * from "table" limit 1
 
 * 表の一覧を表示
 
