@@ -1,9 +1,14 @@
-ls　　　           　　　：参照
-cd                   　　：移動
-cd ../                 　：戻る
-mkdir フォルダ名　　　　 ：フォルダ作成
-emacs ファイル名.拡張子　：ファイル作成
-ctl+x→ctl+c→y            ：保存
-rm ファイル              ：ファイル削除
+mysql クエリ
 
-※winではcdがdirになる
+・tableのth1とth2との最初の1行を表示する
+　select "th1","th2" from "table" where 1
+
+・tableの全ての要素のうち一行目を表示する
+　select * from "table" limit 1
+
+・表の一覧を表示
+　show tables
+
+
+・データべースの一覧を表示
+　show databases
