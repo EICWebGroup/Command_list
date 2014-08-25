@@ -2,7 +2,7 @@
 
 * tableのth1とth2との最初の1行を表示する
 
- select "th1","th2" from "table" where 1
+ select "th1","th2" from "table" where 条件式
 
 * tableの全ての要素のうち一行目を表示する
 
@@ -10,7 +10,7 @@
 
 * 表の一覧を表示
 
-show tables
+  show tables
 
 * データべースの一覧を表示
 
