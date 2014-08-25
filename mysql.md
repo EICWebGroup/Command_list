@@ -4,6 +4,7 @@
 * mysqlを開く
 * mysql -u root -pを入力
 * パスワードは空白のまま
+
 ##ログアウト
 * exitまたはquitを入力
 
@@ -11,10 +12,13 @@
 ##DATABASE
 ###データべースの一覧を表示
 * show databases;
+
 ###databaseの作成
 * create database "database名";
+
 ###データべースの選択
 * use "database名";
+
 ###データベースの削除
 * drop database "database名";
 
@@ -22,16 +26,19 @@
 ##TABLE
 ###表の一覧を表示
 * show tables;
+
 ###テーブルの作成
 * create table "table名"(
   "変数名" "型名(数値)"
   ,,,
   );
+  
 ###テーブル内のカラムを表示
 * desc "table名";
 * describe "table名";
 * show columns "table名"( from "database名");
 * Field：フィールド名、Type：データ型、Null：Nullを許可するかどうか、Key：主キー(Primary Key)、Default：初期値、Extra：オートインクリメントなど
+
 ###テーブル情報を表示
 * show table status( from "database名")( like "wild cardS");
 
