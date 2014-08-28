@@ -1,11 +1,13 @@
 #MySQL_Query
 
-##ログイン
+##MySQL_Queryの起動・終了
+###ログイン
 1. XAMPPの起動
 2. mysqlを開く
 3. mysql -u root -pを入力
-4. パスワードは空白のまま  
-##ログアウト
+4. パスワードは空白のまま
+
+###ログアウト
 * exitまたはquitを入力
 
 ##MySQLデータ型
