@@ -113,7 +113,7 @@ mysql> create table grocery_inventory(
     -> );
 Query OK, 0 rows affected (0.49 sec)
 ```  
-¬Œ÷‚µ‚½‚Æ‚«‚É`Query OK, 0 rows affected (0.49 sec)`‚È‚Ç‚Æ•\¦‚³‚ê‚éB  
+¬Œ÷‚µ‚½‚Æ‚«‚É`Query OK, 0 rows affected (0.49 sec)`‚È‚Ç‚Æ•\¦‚³‚ê‚éBã‚Ì—á‚Å‚ÍDESC table_name‚È‚Ç‚ğg‚¦‚Î‰º‚Ì‚æ‚¤‚É‚È‚é‚Í‚¸‚Å‚ ‚éB
 ```MySQL
 +------------+-------------+------+-----+---------+----------------+  
 | Field      | Type        | Null | Key | Default | Extra          |  
@@ -130,8 +130,7 @@ Extra‚Éauto_increment‚ğw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“ü‚ÉŸ‚Ég—p‰Â”\‚È”Ô†‚ªid_field‚É’
 ####ƒe[ƒuƒ‹“à‚ÌƒJƒ‰ƒ€‚ğ•\¦
 * `DESC table_name`
 * `DESCRIBE table_name`
-* `SHOW COLUMNS table_name( FROM database_name)`
-
+* `SHOW COLUMNS table_name( FROM database_name)`  
 ‚È‚Ç‚Æ‚·‚ê‚ÎAtable‚Ìcolumn‚ğQÆ‚Å‚«‚éB  
 —á)
 ```MySQL
@@ -187,6 +186,38 @@ mysql> select * from grocery_inventory;
 4 rows in set (0.12 sec)
 ```
 
+“Á’è‚Ìcolumn‚Ì‚İ‚ğŒ©‚½‚¢‚Æ‚«‚Íu*v‚Ì‘ã‚í‚è‚Écolumn_name‚ğu,v‚Å‹æØ‚Á‚Äw’è‚·‚éB  
+—á)
+```MySQL
+mysql> select id,item_name,curr_qty from grocery_inventory;
++----+-------------------------+----------+
+| id | item_name               | curr_qty |
++----+-------------------------+----------+
+|  1 | Apples                  |     1000 |
+|  2 | Bunches of Grapes       |      500 |
+|  3 | Bottled Water (6-pack)  |      250 |
+|  4 | Bottled Water (12-pack) |      500 |
++----+-------------------------+----------+
+4 rows in set (0.09 sec)
+```
+
+####•À‚×‘Ö‚¦
+`ORDER BY some_coolumn [ASC | DESC]`‚ğg‚¦‚Î”CˆÓ‚ÌğŒ‚Årow‚ğ“ü‚ê‘Ö‚¦‚é‚±‚Æ‚ª‚Å‚«‚éB  
+—á)@item_name‚Ì‰p”š‚Å•À‚×‘Ö‚¦‚é  
+```MySQL
+mysql> select id, item_name, curr_qty from grocery_inventory order by item_name;
+
++----+-------------------------+----------+
+| id | item_name               | curr_qty |
++----+-------------------------+----------+
+|  1 | Apples                  |     1000 |
+|  4 | Bottled Water (12-pack) |      500 |
+|  3 | Bottled Water (6-pack)  |      250 |
+|  2 | Bunches of Grapes       |      500 |
++----+-------------------------+----------+
+4 rows in set (0.09 sec)
+```
+
 
 
 ###record•ÏX
@@ -239,9 +270,6 @@ Query OK, 1 row affected, 1 warning (0.08 sec)
 
 ####ƒf[ƒ^íœ
 * DELETE FROM ƒe[ƒuƒ‹–¼ [WHERE ğŒ®];
-
-####ƒtƒB[ƒ‹ƒh‚Ì“ü‚ê‘Ö‚¦
-* SELECT "ƒJƒ‰ƒ€–¼2","ƒJƒ‰ƒ€–¼1" FROM "table–¼";
 
 
 ###database‚ÆPHP‚Ì˜AŒg
