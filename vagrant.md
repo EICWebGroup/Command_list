@@ -1,7 +1,7 @@
 ##vagrant
 
 ###vagrantの立ち上げ
-1. cmdでDocumenta\Homestead移動し、vagrantと入力
+1. cmdでDocumenta\Homesteadに移動し、vagrantと入力
 2. Puttyを開いてvagrantを選択
 3. パスワードはなし
 
