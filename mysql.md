@@ -96,9 +96,9 @@ mysql> show tables;
 ```
 
 ####テーブルの作成
-* データベースに未接続時  
+* データベースに未接続時
 #####`CREATE TABLE database_name.table_name(column_name column_type);`  
-* データベースに接続時  
+* データベースに接続時
 #####`CREATE TABLE table_name(column_name column_type);`
 
 database_name、table_name、column_nameは任意、column_typeはデータ型から選択する。  
