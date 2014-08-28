@@ -65,14 +65,17 @@
 table_name、column_nameは任意、column_typeはデータ型から選択  
 Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される  
 例)  
-`mysql> create table grocery_inventory(  
-    -> id int not null primary key auto_increment,  
-    -> item_name varchar(50) not null,  
-    -> item_desc text,  
-    -> item_price float not null,  
-    -> curr_qty int not null  
-    -> );  
-Query OK, 0 rows affected (0.49 sec)`  
+```MySQL
+mysql> create table grocery_inventory(
+    -> id int not null primary key auto_increment,
+    -> item_name varchar(50) not null,
+    -> item_desc text,
+    -> item_price float not null,
+    -> curr_qty int not null
+    -> );
+Query OK, 0 rows affected (0.49 sec)
+```
+```MySQL
 +------------+-------------+------+-----+---------+----------------+  
 | Field      | Type        | Null | Key | Default | Extra          |  
 +------------+-------------+------+-----+---------+----------------+  
@@ -82,7 +85,7 @@ Query OK, 0 rows affected (0.49 sec)`
 | item_price | float       | NO   |     | NULL    |                |  
 | curr_qty   | int(11)     | NO   |     | NULL    |                |  
 +------------+-------------+------+-----+---------+----------------+  
-
+```
   
 ####テーブル内のカラムを表示
 * DESC "TABLE名";
