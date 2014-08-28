@@ -1,7 +1,6 @@
 ##MySQL_Query
 
 
-
 ###MySQL_Queryの起動・終了
 ####ログイン
 1. XAMPPの起動
@@ -11,6 +10,7 @@
 
 ####ログアウト
 * exitまたはquitを入力
+
 
 ###MySQLデータ型
 ####数値データ
@@ -44,6 +44,7 @@
 * __ENUM__：列挙型、選択対象の値を含むリストが生成され、保存時にはインデクスを利用する
 * __SET__：ENUMMと同様リストとして定義されるが、値のインデクスとしてではなく、完全な値として保存される
 
+
 ###データベースの操作
 ####データべースの一覧を表示
 #####`SHOW DATABASES;`
@@ -67,20 +68,20 @@ mysql> SHOW DATABASES;
 ```
 
 ####データベースの作成
-* CREATE DATABASE "DATABASE名";
+#####`CREATE DATABASE database_name;`
 
 ####データべースの選択
-#####`USE "DATABASE名";`
+#####`USE database_name;`
 
 例)  
 ```MySQL
-mysql> use first_mysql;
+mysql> USE first_mysql;
 Database changed
 ```  
 成功すると`Database changed`と表示される。
 
 ####データベースの削除
-* DROP DATABASE "DATABASE名";
+#####`DROP DATABASE "DATABASE名";`
 
 
 ###テーブルの操作
@@ -100,8 +101,7 @@ mysql> SHOW TABLES;
 
 ####テーブルの作成
 #####`CREATE TABLE database_name.table_name(column_name column_type);`  (データベースに未接続時)  
-#####`CREATE TABLE table_name(column_name column_type);`(データベースに接続時)
-
+#####`CREATE TABLE table_name(column_name column_type);`(データベースに接続時)  
 database_name、table_name、column_nameは任意、column_typeはデータ型から選択する。  
 column_name column_typeは「,」で区切ることで複数組を同時に指定できる。  
 
@@ -115,7 +115,8 @@ mysql> CREATE TABLE grocery_inventory(
     -> curr_qty INT NOT NULL
     -> );
 Query OK, 0 rows affected (0.49 sec)
-```  
+```
+
 成功したときに`Query OK, 0 rows affected (0.49 sec)`などと表示される。上の例ではDESC table_nameなどを使えば下のようになるはずである。
 ```MySQL
 +------------+-------------+------+-----+---------+----------------+  
@@ -131,10 +132,11 @@ Query OK, 0 rows affected (0.49 sec)
 Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される。  
   
 ####テーブル内のカラムを表示
-* `DESC table_name`
-* `DESCRIBE table_name`
-* `SHOW COLUMNS table_name( FROM database_name)`  
-などとすれば、tableのcolumnを参照できる。  
+#####`DESC table_name`
+#####`DESCRIBE table_name`
+#####`SHOW COLUMNS table_name( FROM database_name)`  
+などとすれば、tableのcolumnを参照できる。
+
 例)
 ```MySQL
 mysql> DESC grocery_inventory;
@@ -149,6 +151,7 @@ mysql> DESC grocery_inventory;
 +------------+-------------+------+-----+---------+----------------+
 5 rows in set (0.02 sec)
 ```
+
 * __Field__：フィールド名
 * __Type__：データ型
 * __Null__：Nullを許可するかどうか
@@ -161,7 +164,6 @@ mysql> DESC grocery_inventory;
 
 ####データベースの削除
 #####`DROP TABLE table_name;`
-
 
 ####テーブルのレコードを表示
 #####`SELECT expressions_and_columns FROM table_name;`  
@@ -268,9 +270,8 @@ mysql> SELECT * FROM grocery_inventory WHERE curr_qty = 500;
 
 ###record変更
 ####テーブルにレコードのデータ挿入
-#####* `INSERT INTO table_name (column_list) VALUES (column values);`
-#####* `INSERT INTO table_name SET column_list = column values;`
-
+#####`INSERT INTO table_name (column_list) VALUES (column values);`
+#####`INSERT INTO table_name SET column_list = column values;`
 上の2つの構文は同様の意味をもつ。  
 column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意し、文字列内に「'」や「"」があるときは囲んでいるのと同じ方をエスケープする必要がある。
 
@@ -290,6 +291,7 @@ Query OK, 1 row affected (1.39 sec)
 mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
 Query OK, 1 row affected (0.08 sec)
 ```
+
 また、id作成時に、AUTO_INCREMENTを設定しておけば、column_valueでidを省略することができる。ただし、このときはcolumn_nameをすべて明示しなくてはならず、次の例ではエラーとなる。  
 例)
 ```MySQL
