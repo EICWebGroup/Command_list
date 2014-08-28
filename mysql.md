@@ -67,7 +67,13 @@ mysql> show databases;
 * CREATE DATABASE "DATABASE名";
 
 ####データべースの選択
-* USE "DATABASE名";
+* USE "DATABASE名";  
+例)  
+```MySQL
+mysql> use first_mysql;
+Database changed
+```  
+成功すると`Database changed`と表示される。
 
 ####データベースの削除
 * DROP DATABASE "DATABASE名";
