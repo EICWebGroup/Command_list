@@ -147,7 +147,12 @@ Extra‚Éauto_increment‚ğw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“ü‚ÉŸ‚Ég—p‰Â”\‚È”Ô†‚ªid_field‚É’
 +------------+-------------+------+-----+---------+----------------+
 5 rows in set (0.02 sec)
 ```
-FieldFƒtƒB[ƒ‹ƒh–¼ATypeFƒf[ƒ^Œ^ANullFNull‚ğ‹–‰Â‚·‚é‚©‚Ç‚¤‚©AKeyFåƒL[(Primary Key)ADefaultF‰Šú’lAExtraFƒI[ƒgƒCƒ“ƒNƒŠƒƒ“ƒg‚È‚Ç
+* __Field__FƒtƒB[ƒ‹ƒh–¼
+* __Type__Fƒf[ƒ^Œ^
+* __Null__FNull‚ğ‹–‰Â‚·‚é‚©‚Ç‚¤‚©
+* __Key__FåƒL[(Primary Key)
+* __Default__F‰Šú’l
+* __Extra__FƒI[ƒgƒCƒ“ƒNƒŠƒƒ“ƒg
 
 ####ƒe[ƒuƒ‹î•ñ‚ğ•\¦
 * SHOW TABLE STATUS( FROM "DATABASE–¼")( LIKE "WILD CARDS");
