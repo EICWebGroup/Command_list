@@ -138,6 +138,10 @@ Extra‚Éauto_increment‚ðŽw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“üŽž‚ÉŽŸ‚ÉŽg—p‰Â”\‚È”Ô†‚ªid_field‚É’
 ####ƒe[ƒuƒ‹î•ñ‚ð•\Ž¦
 * SHOW TABLE STATUS( FROM "DATABASE–¼")( LIKE "WILD CARDS");
 
+####ƒf[ƒ^ƒx[ƒX‚Ìíœ
+`DROP TABLE table_name;`
+
+
 ###RECORD•\Ž¦
 ####ƒe[ƒuƒ‹‚Ì‘S‚Ä‚Ì—v‘f‚ð•\Ž¦
 SELECT * FROM "TABLE–¼";
