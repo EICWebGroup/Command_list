@@ -162,10 +162,10 @@ mysql> DESC grocery_inventory;
 
 ####テーブルのレコードを表示
 #####`SELECT expressions_and_columns FROM table_name;`  
-これに様々な条件を加えることで必要十分なレコードを見ることができる。例えば次の三つの構文は上の構文の後ろに付け加える。
-#####`WHERE some_condition_is_true`  
+これに様々な条件を加えることで必要十分なレコードを見ることができる。例えば次の三つの構文は上の構文の後ろに付け加える。 
 #####`ORDER BY some_coolumn [ASC | DESC]`  
 #####`LIMIT offset, rows`
+#####`WHERE some_condition_is_true` 
 
 また、テーブルのすべての行列を見るときには「*」を用いる。  
 #####`SELECT * FROM table_name;`  
@@ -232,6 +232,7 @@ mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY item_name 
 ####結果の制限
 `LIMIT offset, rows`を用いることでSELECTクエリの結果から特定数のrecordのみを返すことができ、このとき開始位置(offset)とrows(行の数)を指定する。  
 パラメータを1つだけ指定したときは先頭が開始位置となり、指定したパラメータはrowをさす。  
+結果が見つからなったときはからの結果セットが表示されるだけで、errorにはならない。  
 例)　id、item_name、qurr_qtyをqurr_qtyの小さい順に2つまでを表示する
 ```MySQL
 mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY curr_qty LIMIT 2;
@@ -242,6 +243,21 @@ mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY curr_qty L
 |  4 | Bottled Water (12-pack) |      500 |
 +----+-------------------------+----------+
 2 rows in set (0.04 sec)
+```
+
+
+###queryでのWHEREの使用
+`WHERE some_condition_is_true` はSELECT構文などで特定の条件を指定するときに使う。  
+例)　curr_qty = 500を満たすrowを表示
+```MySQL
+mysql> SELECT * FROM grocery_inventory WHERE curr_qty = 500;
++----+-------------------------+---------------------+------------+----------+
+| id | item_name               | item_desc           | item_price | curr_qty |
++----+-------------------------+---------------------+------------+----------+
+|  2 | Bunches of Grapes       | Sheedless grapes    |       2.99 |      500 |
+|  4 | Bottled Water (12-pack) | 500ml spring water. |       4.49 |      500 |
++----+-------------------------+---------------------+------------+----------+
+2 rows in set (0.14 sec)
 ```
 
 
