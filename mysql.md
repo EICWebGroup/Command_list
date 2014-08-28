@@ -152,7 +152,7 @@ Extra‚Éauto_increment‚ðŽw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“üŽž‚ÉŽŸ‚ÉŽg—p‰Â”\‚È”Ô†‚ªid_field‚É’
 * __Null__FNull‚ð‹–‰Â‚·‚é‚©‚Ç‚¤‚©
 * __Key__FŽåƒL[(Primary Key)
 * __Default__F‰Šú’l
-* __Extra__FƒI[ƒgƒCƒ“ƒNƒŠƒƒ“ƒg
+* __Extra__FƒI[ƒgƒCƒ“ƒNƒŠƒƒ“ƒg‚È‚Ç
 
 ####ƒe[ƒuƒ‹î•ñ‚ð•\Ž¦
 * SHOW TABLE STATUS( FROM "DATABASE–¼")( LIKE "WILD CARDS");
