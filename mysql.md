@@ -18,7 +18,7 @@
 * __BIGINT__：サイズの大きい整数(符号付でもなしでも可)、最大11ケタの幅を指定できる、8バイト
 
 * __FLOAT(M,D)__：浮動小数点数(符号付)、最大11ケタの幅を指定できる、4or8バイト、表示桁数Mと小数点以下桁数Dを指定することもできる
-* __DOUBLE(M,D)：倍精度浮動小数点数(符号付)、最大53ケタの幅を指定できる、8バイト、表示桁数Mと小数点以下桁数Dを指定することもできる
+* __DOUBLE(M,D)__：倍精度浮動小数点数(符号付)、最大53ケタの幅を指定できる、8バイト、表示桁数Mと小数点以下桁数Dを指定することもできる
 * __DECIMAL(M,D)__：アンパック浮動小数点数(符号付)、表示桁数Mと小数点以下桁数Dを必ず指定する、NUMERICも同様
 
 ####日付と時刻型
@@ -44,7 +44,7 @@
 
 ###データベースの操作
 ####データべースの一覧を表示
-`* SHOW DATABASES;`
+`SHOW DATABASES;`
 
 ####データベースの作成
 * CREATE DATABASE "DATABASE名";
@@ -61,7 +61,9 @@
 * SHOW TABLES;
 
 ####テーブルの作成
-* CREATE TABLE table_name(column_name column_type);
+`CREATE TABLE table_name(column_name column_type);`
+table_name、column_nameは任意、column_typeはデータ型から選択
+
   
 ####テーブル内のカラムを表示
 * DESC "TABLE名";
