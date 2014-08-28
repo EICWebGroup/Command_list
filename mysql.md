@@ -47,7 +47,7 @@
 
 —á)  
 ```MySQL
-mysql> show databases;
+mysql> SHOW DATABASES;
 +--------------------+
 | Database           |
 +--------------------+
@@ -86,7 +86,7 @@ Database changed
 
 —á)  
 ```MySQL
-mysql> show tables;
+mysql> SHOW TABLES;
 +-----------------------+
 | Tables_in_first_mysql |
 +-----------------------+
@@ -104,12 +104,12 @@ column_name column_type‚Íu,v‚Å‹æØ‚é‚±‚Æ‚Å•¡”‘g‚ð“¯Žž‚ÉŽw’è‚Å‚«‚éB
 
 —á)  
 ```MySQL
-mysql> create table grocery_inventory(
-    -> id int not null primary key auto_increment,
-    -> item_name varchar(50) not null,
-    -> item_desc text,
-    -> item_price float not null,
-    -> curr_qty int not null
+mysql> CREATE TABLE grocery_inventory(
+    -> id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    -> item_name VARCHAR(50) NOT NULL,
+    -> item_desc TEXT,
+    -> item_price FLOAT NOT NULL,
+    -> curr_qty INT NOT NULL
     -> );
 Query OK, 0 rows affected (0.49 sec)
 ```  
@@ -134,6 +134,7 @@ Extra‚Éauto_increment‚ðŽw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“üŽž‚ÉŽŸ‚ÉŽg—p‰Â”\‚È”Ô†‚ªid_field‚É’
 ‚È‚Ç‚Æ‚·‚ê‚ÎAtable‚Ìcolumn‚ðŽQÆ‚Å‚«‚éB  
 —á)
 ```MySQL
+mysql> DESC grocery_inventory;
 +------------+-------------+------+-----+---------+----------------+
 | Field      | Type        | Null | Key | Default | Extra          |
 +------------+-------------+------+-----+---------+----------------+
@@ -159,10 +160,6 @@ Extra‚Éauto_increment‚ðŽw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“üŽž‚ÉŽŸ‚ÉŽg—p‰Â”\‚È”Ô†‚ªid_field‚É’
 #####`DROP TABLE table_name;`
 
 
-###RECORD•\Ž¦
-####ƒe[ƒuƒ‹‚Ì‘S‚Ä‚Ì—v‘f‚ð•\Ž¦
-SELECT * FROM "TABLE–¼";
-
 ####ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ð•\Ž¦
 #####`SELECT expressions_and_columns FROM table_name;`  
 ‚±‚ê‚É—lX‚ÈðŒ‚ð‰Á‚¦‚é‚±‚Æ‚Å•K—v\•ª‚ÈƒŒƒR[ƒh‚ðŒ©‚é‚±‚Æ‚ª‚Å‚«‚éB—á‚¦‚ÎŽŸ‚ÌŽO‚Â‚Ì\•¶‚Íã‚Ì\•¶‚ÌŒã‚ë‚É•t‚¯‰Á‚¦‚éB
@@ -174,7 +171,7 @@ SELECT * FROM "TABLE–¼";
 #####`SELECT * FROM table_name;`  
 —á)
 ```MySQL
-mysql> select * from grocery_inventory;
+mysql> SELECT * FROM grocery_inventory;
 +----+-------------------------+-------------------------+------------+---------+
 | id | item_name               | item_desc               | item_price | curr_qty|
 +----+-------------------------+-------------------------+------------+---------|
@@ -189,7 +186,7 @@ mysql> select * from grocery_inventory;
 “Á’è‚Ìcolumn‚Ì‚Ý‚ðŒ©‚½‚¢‚Æ‚«‚Íu*v‚Ì‘ã‚í‚è‚Écolumn_name‚ðu,v‚Å‹æØ‚Á‚ÄŽw’è‚·‚éB  
 —á)
 ```MySQL
-mysql> select id,item_name,curr_qty from grocery_inventory;
+mysql> SELECT id,item_name,curr_qty FROM grocery_inventory;
 +----+-------------------------+----------+
 | id | item_name               | curr_qty |
 +----+-------------------------+----------+
@@ -203,10 +200,10 @@ mysql> select id,item_name,curr_qty from grocery_inventory;
 
 ####•À‚×‘Ö‚¦
 `ORDER BY some_coolumn [ASC | DESC]`‚ðŽg‚¦‚Î”CˆÓ‚ÌðŒ‚Årow‚ð“ü‚ê‘Ö‚¦‚é‚±‚Æ‚ª‚Å‚«‚éB  
-—á)@item_name‚Ì‰p”Žš‚Å•À‚×‘Ö‚¦‚é  
+Šù’è‚Å‚Í¸‡(ASC)‚Åƒ\[ƒg‚³‚ê‚é‚ªADESC‚ð‰Á‚¦‚ê‚ÎA~‡‚ðŽw’è‚Å‚«‚éB  
+—á)@item_name‚Ì‰p”Žš‚Å¸‡(ASC)‚É•À‚×‘Ö‚¦‚é
 ```MySQL
-mysql> select id, item_name, curr_qty from grocery_inventory order by item_name;
-
+mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY item_name;
 +----+-------------------------+----------+
 | id | item_name               | curr_qty |
 +----+-------------------------+----------+
@@ -217,6 +214,36 @@ mysql> select id, item_name, curr_qty from grocery_inventory order by item_name;
 +----+-------------------------+----------+
 4 rows in set (0.09 sec)
 ```
+—á)item_name‚Ì‰p”Žš‚Å~‡(DESC)‚É•À‚×‘Ö‚¦‚é
+```MySQL
+mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY item_name DESC;
++----+-------------------------+----------+
+| id | item_name               | curr_qty |
++----+-------------------------+----------+
+|  2 | Bunches of Grapes       |      500 |
+|  3 | Bottled Water (6-pack)  |      250 |
+|  4 | Bottled Water (12-pack) |      500 |
+|  1 | Apples                  |     1000 |
++----+-------------------------+----------+
+4 rows in set (0.04 sec)
+```
+•À‚×‘Ö‚¦‚ÌŠî€‚Æ‚µ‚Ä•¡”‚Ìfield‚ðŽg‚¤‚±‚Æ‚à‚Å‚«‚éB‚»‚Ì‚Æ‚«‚Íƒ\[ƒg‚Ì—Dæ‡ˆÊ‚Ì‚‚¢•û‚©‚çu,v‚Å‹æØ‚è‚Á‚ÄŽw’è‚·‚ê‚Î‚æ‚¢B
+
+####Œ‹‰Ê‚Ì§ŒÀ
+`LIMIT offset, rows`‚ð—p‚¢‚é‚±‚Æ‚ÅSELECTƒNƒGƒŠ‚ÌŒ‹‰Ê‚©‚ç“Á’è”‚Ìrecord‚Ì‚Ý‚ð•Ô‚·‚±‚Æ‚ª‚Å‚«A‚±‚Ì‚Æ‚«ŠJŽnˆÊ’u(offset)‚Ærows(s‚Ì”)‚ðŽw’è‚·‚éB  
+ƒpƒ‰ƒ[ƒ^‚ð1‚Â‚¾‚¯Žw’è‚µ‚½‚Æ‚«‚Íæ“ª‚ªŠJŽnˆÊ’u‚Æ‚È‚èAŽw’è‚µ‚½ƒpƒ‰ƒ[ƒ^‚Írow‚ð‚³‚·B  
+—á)@idAitem_nameAqurr_qty‚ðqurr_qty‚Ì¬‚³‚¢‡‚É2‚Â‚Ü‚Å‚ð•\Ž¦‚·‚é
+```MySQL
+mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY curr_qty LIMIT 2;
++----+-------------------------+----------+
+| id | item_name               | curr_qty |
++----+-------------------------+----------+
+|  3 | Bottled Water (6-pack)  |      250 |
+|  4 | Bottled Water (12-pack) |      500 |
++----+-------------------------+----------+
+2 rows in set (0.04 sec)
+```
+
 
 
 
