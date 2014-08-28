@@ -155,10 +155,10 @@ SELECT * FROM "TABLE名";
 
 複数組を同時にinsertするときには、次のように記述する
 ```
-INSERT INTO table_name (column_list1,column_list2...) VALUES (column_list1_value1,column_list1_value2, ... ),(column_list2_value1,column_list2_value2, ... )...)
+INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value1,column_name1_value2, ... ),(column_name2_value1,column_name2_value2, ... )...)
 ```  
 次の構文も同様の意味。  
-`INSERT INTO table_name SET column_list1 = column value1, column_list2 = column value2;`
+`INSERT INTO table_name SET column_name1 = column value1, column_name2 = column value2;`
 
 ####データ更新
 * UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
