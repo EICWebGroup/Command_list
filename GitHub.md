@@ -35,6 +35,7 @@ git pull URL master
 git add --all  
 git commit -m "メッセージ"  
 git push URL master  
+UsernameとPasswordを入力する
 
 レポジトリの作成方法  
 フォルダを作成する  
