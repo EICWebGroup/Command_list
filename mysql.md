@@ -1,6 +1,7 @@
 #MySQL_Query
 
 ##ログイン
+* XAMPPの起動
 * mysqlを開く
 * mysql -u root -pを入力
 * パスワードは空白のまま
