@@ -176,7 +176,7 @@ INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value
 
 
 ###database‚ÆPHP‚Ì˜AŒg
-```test.php
+```PHP
 <?php
 //MySQL‚Æ‚ÌÚ‘±‚É•K—v
 $username = "root";
