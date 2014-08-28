@@ -159,13 +159,11 @@ mysql> DESC grocery_inventory;
 * __Default__：初期値
 * __Extra__：オートインクリメントなど
 
-####テーブル情報を表示
-* SHOW TABLE STATUS( FROM "DATABASE名")( LIKE "WILD CARDS");
-
-####データベースの削除
+####テーブルの削除
 #####`DROP TABLE table_name;`
 
-####テーブルのレコードを表示
+
+###テーブルのレコードを表示
 #####`SELECT expressions_and_columns FROM table_name;`  
 これに様々な条件を加えることで必要十分なレコードを見ることができる。例えば次の三つの構文は上の構文の後ろに付け加える。 
 #####`ORDER BY some_coolumn [ASC | DESC]`  
@@ -252,7 +250,7 @@ mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY curr_qty L
 
 
 ###queryでのWHEREの使用
-`WHERE some_condition_is_true` はSELECT構文などで特定の条件を指定するときに使う。論理演算子(AND,OR)や比較演算子(=,!,<,> etc)、BETWEEN、LIKE、JOINなどが用いられる。  
+`WHERE some_condition_is_true` はSELECT構文などで特定の条件を指定するときに使う。論理演算子(AND,OR)や比較演算子(=,!,<,> etc)、BETWEEN、LIKEどが用いられる。  
 例)　curr_qty = 500を満たすrowを表示
 ```MySQL
 mysql> SELECT * FROM grocery_inventory WHERE curr_qty = 500;
@@ -279,6 +277,24 @@ mysql> SELECT * FROM grocery_inventory WHERE item_price BETWEEN 1.50 AND 3.00;
 2 rows in set (0.08 sec)
 ```
 
+####LIKEを使用した文字列比較
+`WHERE column_name LIKE "wild_card")`で文字列を比較することができる。パターン照合のワイルドカードとして次の2つが用いられる。  
+* %：複数の文字に一致
+* _：1文字だけに一致  
+基本、比較のときには大文字と小文字は区別されない。BINARYキーワードを使用して強制的に大文字小文字を区別して比較することができる。  
+例)　item_nameが文字Aで始まるrecordを表示
+```MySQL
+mysql> SELECT * FROM grocery_inventory WHERE item_name LIKE "A%";
++----+-----------+-------------------------+------------+----------+
+| id | item_name | item_desc               | item_price | curr_qty |
++----+-----------+-------------------------+------------+----------+
+|  1 | Apples    | Beautiful, ripe apples. |       0.25 |     1000 |
++----+-----------+-------------------------+------------+----------+
+1 row in set (0.03 sec)
+```
+
+
+###複数テーブルからの選択
 
 
 
@@ -296,34 +312,34 @@ INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value
 ```  
 例)
 ```MySQL
-mysql> insert into grocery_inventory (id,item_name,item_desc,item_price,curr_qty) values ("1","Apples","Beautiful, ripe apples.","0.25",1000);
+mysql> INSERT INTO grocery_inventory (id,item_name,item_desc,item_price,curr_qty) VALUES ("1","Apples","Beautiful, ripe apples.","0.25",1000);
 Query OK, 1 row affected (1.39 sec)
 ```
 
 (column_list)は必ずしも必要ではなく、column valuesの順序がcolumn listの数と順番に一致していれば省略してもよい。  
 例)
 ```MySQL
-mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
+mysql> INSERT INTO grocery_inventory VALUES ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
 Query OK, 1 row affected (0.08 sec)
 ```
 
 また、id作成時に、AUTO_INCREMENTを設定しておけば、column_valueでidを省略することができる。ただし、このときはcolumn_nameをすべて明示しなくてはならず、次の例ではエラーとなる。  
 例)
 ```MySQL
-mysql> insert into grocery_inventory values ("Bottled Water (6-pack)","500ml spring water.","2.29",250);
+mysql> INSERT INTO grocery_inventory VALUES ("Bottled Water (6-pack)","500ml spring water.","2.29",250);
 ERROR 1136 (21S01): Column count doesn't match value count at row 1
 ```
 
 そこで、ID_FIELDのAUTO_INCREMENTを処理するには、2つの方法があり、1つ目はID_FIELDを除くすべてのcolumn_nameを明示する。  
 例)
 ```MySQL
-mysql> insert into grocery_inventory (item_name,item_desc,item_price,curr_qty) values ("Bottled Water (6-pack)","500ml spring water.","2.29",250);
+mysql> INSERT INTO grocery_inventory (item_name,item_desc,item_price,curr_qty) VALUES ("Bottled Water (6-pack)","500ml spring water.","2.29",250);
 Query OK, 1 row affected (0.07 sec)
 ```
 
 2つ目は、全てのcolumn_nameを明示するが、ID_FIELDに対してはNULLエントリを指定する。こうすることで自動的にNULLにIDが入力される。
 ```MySQL
-mysql> insert into grocery_inventory values ("NULL","Bottled Water (12-pack)","500ml spring water.","4.49",500);
+mysql> INSERT INTO grocery_inventory VALUES ("NULL","Bottled Water (12-pack)","500ml spring water.","4.49",500);
 Query OK, 1 row affected, 1 warning (0.08 sec)
 ```
 
