@@ -175,7 +175,9 @@ SELECT * FROM "TABLE名";
 
 ###record変更
 ####テーブルにレコードのデータ挿入
-`INSERT INTO table_name (column_list) VALUES (column values);`  
+* `INSERT INTO table_name (column_list) VALUES (column values);`
+* `INSERT INTO table_name SET column_list = column values;`  
+上の2つの構文は同様の意味をもつ。  
 column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。  
 例)
 ```MySQL
@@ -188,8 +190,6 @@ Query OK, 1 row affected (1.39 sec)
 mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
 Query OK, 1 row affected (0.08 sec)
 ```
-次の構文も同様の意味。  
-`INSERT INTO table_name SET column_list = column values;`  
 複数組を同時にinsertするときには、次のように記述する。
 ```MySQL
 INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value1,column_name1_value2, ... ),(column_name2_value1,column_name2_value2, ... )...)
