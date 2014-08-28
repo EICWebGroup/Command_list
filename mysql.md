@@ -166,12 +166,28 @@ Extra‚Éauto_increment‚ðŽw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“üŽž‚ÉŽŸ‚ÉŽg—p‰Â”\‚È”Ô†‚ªid_field‚É’
 ####ƒe[ƒuƒ‹‚Ì‘S‚Ä‚Ì—v‘f‚ð•\Ž¦
 SELECT * FROM "TABLE–¼";
 
-####table‚Ì‘S‚Ä‚Ì—v‘f‚Ì‚¤‚¿ˆês–Ú‚ð•\Ž¦‚·‚é
-* SELECT * FROM "TABLE–¼" LIMIT 1;
+####ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ð•\Ž¦
+`SELECT expressions_and_columns FROM table_name;`  
+‚±‚ê‚É—lX‚ÈðŒ‚ð‰Á‚¦‚é‚±‚Æ‚Å•K—v\•ª‚ÈƒŒƒR[ƒh‚ðŒ©‚é‚±‚Æ‚ª‚Å‚«‚éB—á‚¦‚ÎŽŸ‚ÌŽO‚Â‚Ì\•¶‚Íã‚Ì\•¶‚ÌŒã‚ë‚É•t‚¯‰Á‚¦‚éB
+* `WHERE some_condition_is_true`
+* `ORDER BY some_coolumn [ASC | DESC]`
+* `LIMIT offset, rows`
 
-####table‚Ìth1‚Æth2‚Æ‚ÌÅ‰‚Ì1s‚ð•\Ž¦‚·‚é
-* SELECT "ƒJƒ‰ƒ€–¼1","ƒJƒ‰ƒ€–¼2" FROM "table–¼" WHERE "ðŒŽ®";
-
+‚Ü‚½Aƒe[ƒuƒ‹‚Ì‚·‚×‚Ä‚Ìs—ñ‚ðŒ©‚é‚Æ‚«‚É‚Íu*v‚ð—p‚¢‚éB  
+`SELECT "ƒJƒ‰ƒ€–¼1","ƒJƒ‰ƒ€–¼2" FROM "table–¼" WHERE "ðŒŽ®";`  
+—á)
+```MySQL
+mysql> select * from grocery_inventory;
++----+-------------------------+-------------------------+------------+---------+
+| id | item_name               | item_desc               | item_price | curr_qty|
++----+-------------------------+-------------------------+------------+---------|
+|  1 | Apples                  | Beautiful, ripe apples. |       0.25 |     1000|
+|  2 | Bunches of Grapes       | Sheedless grapes        |       2.99 |      500|
+|  3 | Bottled Water (6-pack)  | 500ml spring water.     |       2.29 |      250|
+|  4 | Bottled Water (12-pack) | 500ml spring water.     |       4.49 |      500|
++----+-------------------------+-------------------------+------------+---------+
+4 rows in set (0.12 sec)
+```
 
 ###record•ÏX
 ####ƒe[ƒuƒ‹‚ÉƒŒƒR[ƒh‚Ìƒf[ƒ^‘}“ü
@@ -179,7 +195,7 @@ SELECT * FROM "TABLE–¼";
 * `INSERT INTO table_name SET column_list = column values;`
 
 ã‚Ì2‚Â‚Ì\•¶‚Í“¯—l‚ÌˆÓ–¡‚ð‚à‚ÂB  
-column_name_value‚É•¶Žš—ñ‚ðŽg‚¤‚Æ‚«‚Íu'v‚Ü‚½‚Íu"v‚Å‚»‚Ì•¶Žš—ñ‚ðˆÍ‚Þ‚±‚Æ‚É’ˆÓ‚·‚µA•¶Žš—ñ“à‚Éu'v‚âu"v‚ª‚ ‚é‚Æ‚«‚ÍˆÍ‚ñ‚Å‚¢‚é‚Ì‚Æ“¯‚¶•û‚ÍƒGƒXƒP[ƒv‚·‚é•K—v‚ª‚ ‚éB
+column_name_value‚É•¶Žš—ñ‚ðŽg‚¤‚Æ‚«‚Íu'v‚Ü‚½‚Íu"v‚Å‚»‚Ì•¶Žš—ñ‚ðˆÍ‚Þ‚±‚Æ‚É’ˆÓ‚µA•¶Žš—ñ“à‚Éu'v‚âu"v‚ª‚ ‚é‚Æ‚«‚ÍˆÍ‚ñ‚Å‚¢‚é‚Ì‚Æ“¯‚¶•û‚ðƒGƒXƒP[ƒv‚·‚é•K—v‚ª‚ ‚éB
 
 •¡”‘g‚ð“¯Žž‚Éinsert‚·‚é‚Æ‚«‚É‚ÍAŽŸ‚Ì‚æ‚¤‚É‹Lq‚·‚éB
 ```MySQL
@@ -196,6 +212,25 @@ Query OK, 1 row affected (1.39 sec)
 ```MySQL
 mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
 Query OK, 1 row affected (0.08 sec)
+```
+‚Ü‚½Aidì¬Žž‚ÉAAUTO_INCREMENT‚ðÝ’è‚µ‚Ä‚¨‚¯‚ÎAcolumn_value‚Åid‚ðÈ—ª‚·‚é‚±‚Æ‚ª‚Å‚«‚éB‚½‚¾‚µA‚±‚Ì‚Æ‚«‚Ícolumn_name‚ð‚·‚×‚Ä–¾Ž¦‚µ‚È‚­‚Ä‚Í‚È‚ç‚¸AŽŸ‚Ì—á‚Å‚ÍƒGƒ‰[‚Æ‚È‚éB  
+—á)
+```MySQL
+mysql> insert into grocery_inventory values ("Bottled Water (6-pack)","500ml spring water.","2.29",250);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+```
+
+‚»‚±‚ÅAID_FIELD‚ÌAUTO_INCREMENT‚ðˆ—‚·‚é‚É‚ÍA2‚Â‚Ì•û–@‚ª‚ ‚èA1‚Â–Ú‚ÍID_FIELD‚ðœ‚­‚·‚×‚Ä‚Ìcolumn_name‚ð–¾Ž¦‚·‚éB  
+—á)
+```MySQL
+mysql> insert into grocery_inventory (item_name,item_desc,item_price,curr_qty) values ("Bottled Water (6-pack)","500ml spring water.","2.29",250);
+Query OK, 1 row affected (0.07 sec)
+```
+
+2‚Â–Ú‚ÍA‘S‚Ä‚Ìcolumn_name‚ð–¾Ž¦‚·‚é‚ªAID_FIELD‚É‘Î‚µ‚Ä‚ÍNULLƒGƒ“ƒgƒŠ‚ðŽw’è‚·‚éB‚±‚¤‚·‚é‚±‚Æ‚ÅŽ©“®“I‚ÉNULL‚ÉID‚ª“ü—Í‚³‚ê‚éB
+```MySQL
+mysql> insert into grocery_inventory values ("NULL","Bottled Water (12-pack)","500ml spring water.","4.49",500);
+Query OK, 1 row affected, 1 warning (0.08 sec)
 ```
 
 
