@@ -2,7 +2,7 @@
 ###MySQL_Queryの起動・終了
 ####ログイン
 1. XAMPPの起動
-2. mysqlを開く
+3. 管理者権限でコマンドプロンプトを開く
 3. mysql -u root -pを入力
 4. パスワードは空白のまま
 
@@ -61,7 +61,7 @@
 * SHOW TABLES;
 
 ####テーブルの作成
-	`CREATE TABLE table_name(column_name column_type);`  
+`CREATE TABLE table_name(column_name column_type);`  
 table_name、column_nameは任意、column_typeはデータ型から選択
 
   
