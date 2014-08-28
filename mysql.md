@@ -156,14 +156,14 @@ SELECT * FROM "TABLE名";
 ###record変更
 ####テーブルにレコードのデータ挿入
 `INSERT INTO table_name (column_list) VALUES (column values);`  
+column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。  
 次の構文も同様の意味。  
 `INSERT INTO table_name SET column_list = column values;`
 
 複数組を同時にinsertするときには、次のように記述する。
 ```
 INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value1,column_name1_value2, ... ),(column_name2_value1,column_name2_value2, ... )...)
-```
-column_nameやcolumn_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。  
+```  
 
 ####データ更新
 * UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
