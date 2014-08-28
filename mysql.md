@@ -65,7 +65,8 @@
   `CREATE TABLE database_name.table_name(column_name column_type);`  
 * データベースに接続時  
   `CREATE TABLE table_name(column_name column_type);`  
-table_name、column_nameは任意、column_typeはデータ型から選択する。  
+
+database_name、table_name、column_nameは任意、column_typeはデータ型から選択する。  
 column_name column_typeは「,」で区切ることで複数組を同時に指定できる。  
 
 例)  
