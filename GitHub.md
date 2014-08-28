@@ -24,19 +24,19 @@
 
 変更履歴：GitHubページ上のコードの右上にあるhistoryボタンを押すと選んで見られる
 
-既存のrepositoryをアップロードする際のコマンドプロンプト
-git pull URL master
-git add .
-git commit -m "メッセージ"
-git push URL master
+既存のrepositoryをアップロードする際のコマンドプロンプト  
+git pull URL master  
+git add .  
+git commit -m "メッセージ"  
+git push URL master  
 
-ファイルを削除した後アップロードする際に行うコマンドプロンプト
-git pull URL master
-git add --all
-git commit -m "メッセージ"
-git push URL master
+ファイルを削除した後アップロードする際に行うコマンドプロンプト  
+git pull URL master  
+git add --all  
+git commit -m "メッセージ"  
+git push URL master  
 
-レポジトリの作成方法
-フォルダを作成する
-git　cd でレポジトリに変えたいフォルダまで移動する
-git init
+レポジトリの作成方法  
+フォルダを作成する  
+git　cd でレポジトリに変えたいフォルダまで移動する  
+git init  
