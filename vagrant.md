@@ -9,6 +9,6 @@
 * cmdでDocumenta\Homestead移動し、vagrant provisionと入力する
 
 ###ファイルの保存と参照
-* ドファイルはキュメント\Codeに保存してバーチャルコンピュータと共有する
+* ファイルはドキュメント\Codeに保存してバーチャルコンピュータと共有する
 * ブラウザでlocalhost:8000/*とするとそのファイルを参照できる
 * localhost:2222
