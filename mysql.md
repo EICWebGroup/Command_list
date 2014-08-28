@@ -173,3 +173,37 @@ INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value
 
 ####フィールドの入れ替え
 * SELECT "カラム名2","カラム名1" FROM "table名";
+
+
+###databaseとPHPの連携
+```test.php
+<?php
+//MySQLとの接続に必要
+$username = "root";
+$password = "secret";
+$host = "localhost";
+$dbname = "sample";
+
+ //MySQLとの接続
+ try{
+	$db = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
+}
+
+catch(PDOException $ex)
+{
+	die("Failed to connect to the database: " . $ex->getMessage());
+}
+
+$q = "SELECT * FROM samples";
+try{
+	$stmt = $db->prepare($q);
+	$stmt->execute();
+}catch(PDOExption $ex){
+	die("Failed to connect to the database: " . $ex->getMessage());
+}
+
+ //fetch()で1行取り出し、fetchAll()ですべてを取り出すことができる
+ $data=$stmt->fetchAll();
+
+ var_dump($data);
+```
