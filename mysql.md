@@ -5,59 +5,61 @@
 * mysqlを開く
 * mysql -u root -pを入力
 * パスワードは空白のまま
-
 ##ログアウト
 * exitまたはquitを入力
 
+##MySQLデータ型
+###数値データ
+* INT：通常サイズの整数(符号付でもなしでも可)　　最大11ケタの幅を指定できる
 
 ##DATABASE
 ###データべースの一覧を表示
-* show databases;
+* SHOW DATABASES;
 
 ###databaseの作成
-* create database "database名";
+* CREATE DATABASE "DATABASE名";
 
 ###データべースの選択
-* use "database名";
+* USE "DATABASE名";
 
 ###データベースの削除
-* drop database "database名";
+* DROP DATABASE "DATABASE名";
 
 
 ##TABLE
 ###表の一覧を表示
-* show tables;
+* SHOW TABLES;
 
 ###テーブルの作成
-* create table "table名"(
+* CREATE TABLE "TABLE名"(
   "変数名" "型名(数値)"
   ,,,
   );
   
 ###テーブル内のカラムを表示
-* desc "table名";
-* describe "table名";
-* show columns "table名"( from "database名");
+* DESC "TABLE名";
+* DESCRIBE "TABLE名";
+* SHOW COLUMNS "TABLE名"( FROM "DATABASE名");
 * Field：フィールド名、Type：データ型、Null：Nullを許可するかどうか、Key：主キー(Primary Key)、Default：初期値、Extra：オートインクリメントなど
 
 ###テーブル情報を表示
-* show table status( from "database名")( like "wild cardS");
+* SHOW TABLE STATUS( FROM "DATABASE名")( LIKE "WILD CARDS");
 
-##record表示
+##RECORD表示
 ###テーブルの全ての要素を表示
-select * from "table名";
+SELECT * FROM "TABLE名";
 
 ###tableの全ての要素のうち一行目を表示する
-* select * from "table名" limit 1;
+* SELECT * FROM "TABLE名" LIMIT 1;
 
 ###tableのth1とth2との最初の1行を表示する
-* select "カラム名1","カラム名2" from "table名" where "条件式";
+* SELECT "カラム名1","カラム名2" FROM "table名" WHERE "条件式";
 
 
 ##record変更
 ###テーブルにレコードのデータ挿入
-* INSERT INTO "table名" ("カラム名1"(,"カラム名2", ... )) VALUES ("値1"(,"値2", ... ))(,("値1'"(,"値2'", ... )));
-* insert into "table名" set "カラム名1" = "値1", "カラム名" = "値2";
+* INSERT INTO "TABLE名" ("カラム名1"(,"カラム名2", ... )) VALUES ("値1"(,"値2", ... ))(,("値1'"(,"値2'", ... )));
+* insert into "TABLE名" set "カラム名1" = "値1", "カラム名" = "値2";
 
 ###データ更新
 * UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
@@ -66,4 +68,4 @@ select * from "table名";
 * DELETE FROM テーブル名 [WHERE 条件式];
 
 ##フィールドの入れ替え
-* select "カラム名2","カラム名1" from "table名";
+* SELECT "カラム名2","カラム名1" FROM "table名";
