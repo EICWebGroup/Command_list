@@ -61,7 +61,7 @@
 * SHOW TABLES;
 
 ####テーブルの作成
-`CREATE TABLE table_name(column_name column_type);`  
+	`CREATE TABLE table_name(column_name column_type);`  
 table_name、column_nameは任意、column_typeはデータ型から選択
 
   
