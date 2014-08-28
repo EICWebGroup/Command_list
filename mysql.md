@@ -61,9 +61,9 @@
 * SHOW TABLES;
 
 ####テーブルの作成
-* データベースに未接続時
+* データベースに未接続時　　
   `CREATE TABLE database_name.table_name(column_name column_type);`  
-* データベースに接続時
+* データベースに接続時　　
   `CREATE TABLE table_name(column_name column_type);`  
 table_name、column_nameは任意、column_typeはデータ型から選択する。  
 column_name column_typeは「,」で区切ることで複数組を同時に指定できる。  
@@ -78,7 +78,8 @@ mysql> create table grocery_inventory(
     -> curr_qty int not null
     -> );
 Query OK, 0 rows affected (0.49 sec)
-```
+```  
+成功したときに`Query OK, 0 rows affected (0.49 sec)`などと表示される。  
 ```MySQL
 +------------+-------------+------+-----+---------+----------------+  
 | Field      | Type        | Null | Key | Default | Extra          |  
