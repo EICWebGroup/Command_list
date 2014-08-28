@@ -281,6 +281,7 @@ mysql> SELECT * FROM grocery_inventory WHERE item_price BETWEEN 1.50 AND 3.00;
 `WHERE column_name LIKE "wild_card")`で文字列を比較することができる。パターン照合のワイルドカードとして次の2つが用いられる。  
 * %：複数の文字に一致
 * _：1文字だけに一致　　
+
 基本、比較のときには大文字と小文字は区別されない。BINARYキーワードを使用して強制的に大文字小文字を区別して比較することができる。  
 例)　item_nameが文字Aで始まるrecordを表示
 ```MySQL
