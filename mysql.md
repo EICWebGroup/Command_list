@@ -149,12 +149,13 @@ SELECT * FROM "TABLE名";
 
 ###record変更
 ####テーブルにレコードのデータ挿入
-* `INSERT INTO table_name (column_list) VALUES (column values);`  
-  複数組を同時にinsertするときには、次のように記述する
+`INSERT INTO table_name (column_list) VALUES (column values);`  
+複数組を同時にinsertするときには、次のように記述する
 ```
-INSERT INTO table_name (column_list1,column_list2...) VALUES (column1_value1,column1_value2, ... ),(column2_value1,column2_value2, ... )...)
+INSERT INTO table_name (column_list1,column_list2...) VALUES (column_list1_value1,column_list1_value2, ... ),(column_list2_value1,column_list2_value2, ... )...)
 ```  
-* insert into "TABLE名" set "カラム名1" = "値1", "カラム名" = "値2";
+次の構文も同様の意味。
+`INSERT INTO table_name SET column_list1 = column alue1, column_list2 = column value2;`  
 
 ####データ更新
 * UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
