@@ -149,7 +149,8 @@ SELECT * FROM "TABLE名";
 
 ###record変更
 ####テーブルにレコードのデータ挿入
-* INSERT INTO "TABLE名" ("カラム名1"(,"カラム名2", ... )) VALUES ("値1"(,"値2", ... ))(,("値1'"(,"値2'", ... )));
+* `INSERT INTO table_name (column_list) VALUES (column values);`  
+  複数組を同時にinsertするときには、`(column_list1,column_list2...) VALUES (column1_value1,column1_value2, ... ),(column2_value1,column2_value2, ... )...)`とすればよい。
 * insert into "TABLE名" set "カラム名1" = "値1", "カラム名" = "値2";
 
 ####データ更新
