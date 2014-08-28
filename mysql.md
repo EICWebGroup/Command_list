@@ -44,7 +44,24 @@
 
 ###データベースの操作
 ####データべースの一覧を表示
-`SHOW DATABASES;`
+`SHOW DATABASES;`  
+例)  
+	```MySQL
+	mysql> show databases;
+	+--------------------+
+	| Database           |
+	+--------------------+
+	| information_schema |
+	| cdcol              |
+	| first_mysql        |
+	| mysql              |
+	| performance_schema |
+	| phpmyadmin         |
+	| test               |
+	| webauth            |
+	+--------------------+
+	8 rows in set (0.00 sec)
+	```
 
 ####データベースの作成
 * CREATE DATABASE "DATABASE名";
@@ -61,20 +78,13 @@
 * SHOW TABLES;  
 例)  
 ```MySQL
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| cdcol              |
-| first_mysql        |
-| mysql              |
-| performance_schema |
-| phpmyadmin         |
-| test               |
-| webauth            |
-+--------------------+
-8 rows in set (0.00 sec)
+mysql> show tables;
++-----------------------+
+| Tables_in_first_mysql |
++-----------------------+
+| grocery_inventory     |
++-----------------------+
+1 row in set (0.00 sec)
 ```
 
 ####テーブルの作成
