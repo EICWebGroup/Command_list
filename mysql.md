@@ -43,7 +43,7 @@
 
 ###ƒf[ƒ^ƒx[ƒX‚Ì‘€ì
 ####ƒf[ƒ^‚×[ƒX‚Ìˆê——‚ğ•\¦
-`SHOW DATABASES;`
+#####`SHOW DATABASES;`
 
 —á)  
 ```MySQL
@@ -67,7 +67,7 @@ mysql> show databases;
 * CREATE DATABASE "DATABASE–¼";
 
 ####ƒf[ƒ^‚×[ƒX‚Ì‘I‘ğ
-`USE "DATABASE–¼";`
+#####`USE "DATABASE–¼";`
 
 —á)  
 ```MySQL
@@ -82,7 +82,7 @@ Database changed
 
 ###ƒe[ƒuƒ‹‚Ì‘€ì
 ####•\‚Ìˆê——‚ğ•\¦
-`SHOW TABLES;`
+#####`SHOW TABLES;`
 
 —á)  
 ```MySQL
@@ -96,10 +96,10 @@ mysql> show tables;
 ```
 
 ####ƒe[ƒuƒ‹‚Ìì¬
-* ƒf[ƒ^ƒx[ƒX‚É–¢Ú‘±  
-  `CREATE TABLE database_name.table_name(column_name column_type);`  
-* ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±  
-  `CREATE TABLE table_name(column_name column_type);`  
+#####* ƒf[ƒ^ƒx[ƒX‚É–¢Ú‘±  
+#####  `CREATE TABLE database_name.table_name(column_name column_type);`  
+#####* ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±  
+#####  `CREATE TABLE table_name(column_name column_type);`  
 
 database_nameAtable_nameAcolumn_name‚Í”CˆÓAcolumn_type‚Íƒf[ƒ^Œ^‚©‚ç‘I‘ğ‚·‚éB  
 column_name column_type‚Íu,v‚Å‹æØ‚é‚±‚Æ‚Å•¡”‘g‚ğ“¯‚Éw’è‚Å‚«‚éB  
@@ -159,7 +159,7 @@ Extra‚Éauto_increment‚ğw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“ü‚ÉŸ‚Ég—p‰Â”\‚È”Ô†‚ªid_field‚É’
 * SHOW TABLE STATUS( FROM "DATABASE–¼")( LIKE "WILD CARDS");
 
 ####ƒf[ƒ^ƒx[ƒX‚Ìíœ
-`DROP TABLE table_name;`
+#####`DROP TABLE table_name;`
 
 
 ###RECORD•\¦
@@ -167,14 +167,14 @@ Extra‚Éauto_increment‚ğw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“ü‚ÉŸ‚Ég—p‰Â”\‚È”Ô†‚ªid_field‚É’
 SELECT * FROM "TABLE–¼";
 
 ####ƒe[ƒuƒ‹‚ÌƒŒƒR[ƒh‚ğ•\¦
-`SELECT expressions_and_columns FROM table_name;`  
+#####`SELECT expressions_and_columns FROM table_name;`  
 ‚±‚ê‚É—lX‚ÈğŒ‚ğ‰Á‚¦‚é‚±‚Æ‚Å•K—v\•ª‚ÈƒŒƒR[ƒh‚ğŒ©‚é‚±‚Æ‚ª‚Å‚«‚éB—á‚¦‚ÎŸ‚ÌO‚Â‚Ì\•¶‚Íã‚Ì\•¶‚ÌŒã‚ë‚É•t‚¯‰Á‚¦‚éB
-* `WHERE some_condition_is_true`
-* `ORDER BY some_coolumn [ASC | DESC]`
-* `LIMIT offset, rows`
+#####* `WHERE some_condition_is_true`
+#####* `ORDER BY some_coolumn [ASC | DESC]`
+#####* `LIMIT offset, rows`
 
 ‚Ü‚½Aƒe[ƒuƒ‹‚Ì‚·‚×‚Ä‚Ìs—ñ‚ğŒ©‚é‚Æ‚«‚É‚Íu*v‚ğ—p‚¢‚éB  
-`SELECT "ƒJƒ‰ƒ€–¼1","ƒJƒ‰ƒ€–¼2" FROM "table–¼" WHERE "ğŒ®";`  
+#####`SELECT "ƒJƒ‰ƒ€–¼1","ƒJƒ‰ƒ€–¼2" FROM "table–¼" WHERE "ğŒ®";`  
 —á)
 ```MySQL
 mysql> select * from grocery_inventory;
@@ -189,10 +189,12 @@ mysql> select * from grocery_inventory;
 4 rows in set (0.12 sec)
 ```
 
+
+
 ###record•ÏX
 ####ƒe[ƒuƒ‹‚ÉƒŒƒR[ƒh‚Ìƒf[ƒ^‘}“ü
-* `INSERT INTO table_name (column_list) VALUES (column values);`
-* `INSERT INTO table_name SET column_list = column values;`
+#####* `INSERT INTO table_name (column_list) VALUES (column values);`
+#####* `INSERT INTO table_name SET column_list = column values;`
 
 ã‚Ì2‚Â‚Ì\•¶‚Í“¯—l‚ÌˆÓ–¡‚ğ‚à‚ÂB  
 column_name_value‚É•¶š—ñ‚ğg‚¤‚Æ‚«‚Íu'v‚Ü‚½‚Íu"v‚Å‚»‚Ì•¶š—ñ‚ğˆÍ‚Ş‚±‚Æ‚É’ˆÓ‚µA•¶š—ñ“à‚Éu'v‚âu"v‚ª‚ ‚é‚Æ‚«‚ÍˆÍ‚ñ‚Å‚¢‚é‚Ì‚Æ“¯‚¶•û‚ğƒGƒXƒP[ƒv‚·‚é•K—v‚ª‚ ‚éB
