@@ -11,6 +11,6 @@
 ###ファイルの保存と参照
 * ファイルはドキュメント\Codeに保存してバーチャルコンピュータと共有する
 * ブラウザでlocalhost:8000/*とするとそのファイルを参照できる
-* localhost:2222
+* localhost:2222  
   ->SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2  
     Protocol mismatch.
