@@ -195,7 +195,7 @@ Query OK, 1 row affected (0.08 sec)
 `INSERT INTO table_name SET column_list = column values;`
 
 複数組を同時にinsertするときには、次のように記述する。
-```
+```MySQL
 INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value1,column_name1_value2, ... ),(column_name2_value1,column_name2_value2, ... )...)
 ```  
 
