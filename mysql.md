@@ -134,7 +134,8 @@ Extra‚Éauto_increment‚ğw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“ü‚ÉŸ‚Ég—p‰Â”\‚È”Ô†‚ªid_field‚É’
 * `DESCRIBE table_name`
 * `SHOW COLUMNS table_name( FROM database_name)`
 
-‚È‚Ç‚Æ‚·‚ê‚ÎAtable‚Ìcolumn‚ğQÆ‚Å‚«‚éB
+‚È‚Ç‚Æ‚·‚ê‚ÎAtable‚Ìcolumn‚ğQÆ‚Å‚«‚éB  
+—á)
 ```MySQL
 +------------+-------------+------+-----+---------+----------------+
 | Field      | Type        | Null | Key | Default | Extra          |
