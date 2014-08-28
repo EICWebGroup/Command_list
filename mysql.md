@@ -135,6 +135,18 @@ Extra‚Éauto_increment‚ğw’è‚·‚é‚ÆƒŒƒR[ƒh‘}“ü‚ÉŸ‚Ég—p‰Â”\‚È”Ô†‚ªid_field‚É’
 * `SHOW COLUMNS table_name( FROM database_name)`
 
 ‚È‚Ç‚Æ‚·‚ê‚ÎAtable‚Ìcolumn‚ğQÆ‚Å‚«‚éB
+```MySQL
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| item_name  | varchar(50) | NO   |     | NULL    |                |
+| item_desc  | text        | YES  |     | NULL    |                |
+| item_price | float       | NO   |     | NULL    |                |
+| curr_qty   | int(11)     | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.02 sec)
+```
 FieldFƒtƒB[ƒ‹ƒh–¼ATypeFƒf[ƒ^Œ^ANullFNull‚ğ‹–‰Â‚·‚é‚©‚Ç‚¤‚©AKeyFåƒL[(Primary Key)ADefaultF‰Šú’lAExtraFƒI[ƒgƒCƒ“ƒNƒŠƒƒ“ƒg‚È‚Ç
 
 ####ƒe[ƒuƒ‹î•ñ‚ğ•\¦
