@@ -10,12 +10,12 @@
 
 ##MySQLデータ型
 ###数値データ
-* INT：通常サイズの整数(符号付でもなしでも可)　　
+* INT：通常サイズの整数(符号付でもなしでも可)  
 最大11ケタの幅を指定できる
 
 ##DATABASE
 ###データべースの一覧を表示
-* SHOW DATABASES;
+`* SHOW DATABASES;`
 
 ###databaseの作成
 * CREATE DATABASE "DATABASE名";
