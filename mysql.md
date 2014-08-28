@@ -67,7 +67,7 @@
   `CREATE TABLE table_name(column_name column_type);`  
 table_name、column_nameは任意、column_typeはデータ型から選択する。  
 column_name column_typeは「,」で区切ることで複数組を同時に指定できる。  
-Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される。  
+
 例)  
 ```MySQL
 mysql> create table grocery_inventory(
@@ -90,7 +90,8 @@ Query OK, 0 rows affected (0.49 sec)
 | item_price | float       | NO   |     | NULL    |                |  
 | curr_qty   | int(11)     | NO   |     | NULL    |                |  
 +------------+-------------+------+-----+---------+----------------+  
-```
+```  
+Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される。  
   
 ####テーブル内のカラムを表示
 * DESC "TABLE名";
