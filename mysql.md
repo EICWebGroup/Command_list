@@ -252,7 +252,7 @@ mysql> SELECT id, item_name, curr_qty FROM grocery_inventory ORDER BY curr_qty L
 
 
 ###queryでのWHEREの使用
-`WHERE some_condition_is_true` はSELECT構文などで特定の条件を指定するときに使う。  
+`WHERE some_condition_is_true` はSELECT構文などで特定の条件を指定するときに使う。論理演算子(AND,OR)や比較演算子(=,!,<,> etc)、BETWEEN、LIKE、JOINなどが用いられる。  
 例)　curr_qty = 500を満たすrowを表示
 ```MySQL
 mysql> SELECT * FROM grocery_inventory WHERE curr_qty = 500;
@@ -264,6 +264,21 @@ mysql> SELECT * FROM grocery_inventory WHERE curr_qty = 500;
 +----+-------------------------+---------------------+------------+----------+
 2 rows in set (0.14 sec)
 ```
+
+####BETWEEN演算子
+`WHERE column_name BETWEEN min AND max`でcolumn_nameの最小値(min)と最大値(max)の間の結果を検索する。整数や日付に有効。  
+例)　item_priceが1.50から3.00のセットを表示する
+```MySQL
+mysql> SELECT * FROM grocery_inventory WHERE item_price BETWEEN 1.50 AND 3.00;
++----+------------------------+---------------------+------------+----------+
+| id | item_name              | item_desc           | item_price | curr_qty |
++----+------------------------+---------------------+------------+----------+
+|  2 | Bunches of Grapes      | Sheedless grapes    |       2.99 |      500 |
+|  3 | Bottled Water (6-pack) | 500ml spring water. |       2.29 |      250 |
++----+------------------------+---------------------+------------+----------+
+2 rows in set (0.08 sec)
+```
+
 
 
 
