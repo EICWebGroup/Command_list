@@ -1,12 +1,12 @@
 #MySQL_Query
 
 ##ログイン
-* XAMPPの起動
-* mysqlを開く
-* mysql -u root -pを入力
-* パスワードは空白のまま
+1.XAMPPの起動
+2.mysqlを開く
+3.mysql -u root -pを入力
+4.パスワードは空白のまま
 ##ログアウト
-* exitまたはquitを入力
+*exitまたはquitを入力
 
 ##MySQLデータ型
 ###数値データ
