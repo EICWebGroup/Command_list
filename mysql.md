@@ -69,7 +69,7 @@ table_name、column_nameは任意、column_typeはデータ型から選択する。
 column_name column_typeは「,」で区切ることで複数組を同時に指定できる。  
 
 例)  
-```MySQL:qiita.rb
+```MySQL
 mysql> create table grocery_inventory(
     -> id int not null primary key auto_increment,
     -> item_name varchar(50) not null,
