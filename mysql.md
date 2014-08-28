@@ -176,7 +176,7 @@ SELECT * FROM "TABLE名";
 ###record変更
 ####テーブルにレコードのデータ挿入
 * `INSERT INTO table_name (column_list) VALUES (column values);`
-* `INSERT INTO table_name SET column_list = column values;`  
+* `INSERT INTO table_name SET column_list = column values;`
 上の2つの構文は同様の意味をもつ。  
 column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。  
 例)
