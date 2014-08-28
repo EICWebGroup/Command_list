@@ -61,9 +61,13 @@
 * SHOW TABLES;
 
 ####テーブルの作成
-`CREATE TABLE table_name(column_name column_type);`  
-table_name、column_nameは任意、column_typeはデータ型から選択  
-Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される  
+* データベースに未接続時
+  `CREATE TABLE database_name.table_name(column_name column_type);`  
+* データベースに接続時
+  `CREATE TABLE table_name(column_name column_type);`  
+table_name、column_nameは任意、column_typeはデータ型から選択する。  
+column_name column_typeは「,」で区切ることで複数組を同時に指定できる。  
+Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される。  
 例)  
 ```MySQL
 mysql> create table grocery_inventory(
