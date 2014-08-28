@@ -205,4 +205,5 @@ try{
  $data=$stmt->fetchAll();
 
  var_dump($data);
+?>
 ```
