@@ -171,7 +171,7 @@ SELECT * FROM "TABLE名";
 #####`LIMIT offset, rows`
 
 また、テーブルのすべての行列を見るときには「*」を用いる。  
-#####`SELECT "カラム名1","カラム名2" FROM "table名" WHERE "条件式";`  
+#####`SELECT * FROM table_name;`  
 例)
 ```MySQL
 mysql> select * from grocery_inventory;
