@@ -1,4 +1,7 @@
 ##MySQL_Query
+
+
+
 ###MySQL_Queryの起動・終了
 ####ログイン
 1. XAMPPの起動
