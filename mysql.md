@@ -96,9 +96,9 @@ mysql> show tables;
 ```
 
 ####テーブルの作成
-* #####データベースに未接続時  
+* データベースに未接続時  
 #####  `CREATE TABLE database_name.table_name(column_name column_type);`  
-* #####データベースに接続時  
+* データベースに接続時  
 #####  `CREATE TABLE table_name(column_name column_type);`  
 
 database_name、table_name、column_nameは任意、column_typeはデータ型から選択する。  
@@ -169,9 +169,9 @@ SELECT * FROM "TABLE名";
 ####テーブルのレコードを表示
 #####`SELECT expressions_and_columns FROM table_name;`  
 これに様々な条件を加えることで必要十分なレコードを見ることができる。例えば次の三つの構文は上の構文の後ろに付け加える。
-#####* `WHERE some_condition_is_true`
-#####* `ORDER BY some_coolumn [ASC | DESC]`
-#####* `LIMIT offset, rows`
+#####`WHERE some_condition_is_true`  
+#####`ORDER BY some_coolumn [ASC | DESC]`  
+#####`LIMIT offset, rows`
 
 また、テーブルのすべての行列を見るときには「*」を用いる。  
 #####`SELECT "カラム名1","カラム名2" FROM "table名" WHERE "条件式";`  
