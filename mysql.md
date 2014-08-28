@@ -46,22 +46,22 @@
 ####データべースの一覧を表示
 `SHOW DATABASES;`  
 例)  
-	```MySQL
-	mysql> show databases;
-	+--------------------+
-	| Database           |
-	+--------------------+
-	| information_schema |
-	| cdcol              |
-	| first_mysql        |
-	| mysql              |
-	| performance_schema |
-	| phpmyadmin         |
-	| test               |
-	| webauth            |
-	+--------------------+
-	8 rows in set (0.00 sec)
-	```
+```MySQL
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| cdcol              |
+| first_mysql        |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| webauth            |
++--------------------+
+8 rows in set (0.00 sec)
+```
 
 ####データベースの作成
 * CREATE DATABASE "DATABASE名";
