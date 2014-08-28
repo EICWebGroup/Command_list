@@ -58,7 +58,24 @@
 
 ###テーブルの操作
 ####表の一覧を表示
-* SHOW TABLES;
+* SHOW TABLES;  
+例)  
+```MySQL
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| cdcol              |
+| first_mysql        |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
+| webauth            |
++--------------------+
+8 rows in set (0.00 sec)
+```
 
 ####テーブルの作成
 * データベースに未接続時  
