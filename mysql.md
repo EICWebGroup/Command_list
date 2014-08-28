@@ -130,10 +130,12 @@ Query OK, 0 rows affected (0.49 sec)
 Extraにauto_incrementを指定するとレコード挿入時に次に使用可能な番号がid_fieldに追加される。  
   
 ####テーブル内のカラムを表示
-* DESC "TABLE名";
-* DESCRIBE "TABLE名";
-* SHOW COLUMNS "TABLE名"( FROM "DATABASE名");
-* Field：フィールド名、Type：データ型、Null：Nullを許可するかどうか、Key：主キー(Primary Key)、Default：初期値、Extra：オートインクリメントなど
+* `DESC table_name`
+* `DESCRIBE table_name`
+* `SHOW COLUMNS table_name( FROM database_name)`
+
+などとすれば、tableのcolumnを参照できる。
+Field：フィールド名、Type：データ型、Null：Nullを許可するかどうか、Key：主キー(Primary Key)、Default：初期値、Extra：オートインクリメントなど
 
 ####テーブル情報を表示
 * SHOW TABLE STATUS( FROM "DATABASE名")( LIKE "WILD CARDS");
