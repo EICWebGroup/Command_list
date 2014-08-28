@@ -179,15 +179,13 @@ SELECT * FROM "TABLE名";
 column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。  
 例)  
 ```MySQL
-mysql> insert into grocery_inventory (id,item_name,item_desc,item_price,curr_qty
-) values ("1","Apples","Beautiful, ripe apples.","0.25",1000);
+mysql> insert into grocery_inventory (id,item_name,item_desc,item_price,curr_qty) values ("1","Apples","Beautiful, ripe apples.","0.25",1000);
 Query OK, 1 row affected (1.39 sec)
 ```
 (column_list)は必ずしも必要ではなく、column valuesの順序がcolumn listの数と順番に一致していれば省略してもよい。  
 例)  
 ```MySQL
-mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedless
-grapes","2.99",500);
+mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
 Query OK, 1 row affected (0.08 sec)
 ```
 
