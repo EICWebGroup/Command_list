@@ -177,23 +177,27 @@ SELECT * FROM "TABLE名";
 ####テーブルにレコードのデータ挿入
 * `INSERT INTO table_name (column_list) VALUES (column values);`
 * `INSERT INTO table_name SET column_list = column values;`
+
 上の2つの構文は同様の意味をもつ。  
-column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。  
+column_name_valueに文字列を使うときは「'」または「"」でその文字列を囲むことに注意すし、文字列内に「'」や「"」があるときは囲んでいるのと同じ方はエスケープする必要がある。
+
+複数組を同時にinsertするときには、次のように記述する。
+```MySQL
+INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value1,column_name1_value2, ... ),(column_name2_value1,column_name2_value2, ... )...)
+```  
 例)
 ```MySQL
 mysql> insert into grocery_inventory (id,item_name,item_desc,item_price,curr_qty) values ("1","Apples","Beautiful, ripe apples.","0.25",1000);
 Query OK, 1 row affected (1.39 sec)
 ```
+
 (column_list)は必ずしも必要ではなく、column valuesの順序がcolumn listの数と順番に一致していれば省略してもよい。  
 例)
 ```MySQL
 mysql> insert into grocery_inventory values ("2","Bunches of Grapes","Sheedlessgrapes","2.99",500);
 Query OK, 1 row affected (0.08 sec)
 ```
-複数組を同時にinsertするときには、次のように記述する。
-```MySQL
-INSERT INTO table_name (column_name1,column_name2...) VALUES (column_name1_value1,column_name1_value2, ... ),(column_name2_value1,column_name2_value2, ... )...)
-```  
+
 
 ####データ更新
 * UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
