@@ -735,6 +735,94 @@ mysql> select * from access_log;
 
 
 ###MySQLでよく利用される文字列関数
+テーブルを使用せず、SELECTステートメントで関数を利用することができる。
+####長さと連結の関数
+文字列に含まれる文字数をカウントするかんすうにはLENGTH(),OCTET_LENGTH(),CHAR_LENGTH(),CHARACTER_LENGTH()などがある。  
+例)
+```MySQL
+mysql> SELECT LENGTH("This is cool!");
++-------------------------+
+| LENGTH("This is cool!") |
++-------------------------+
+|                      13 |
++-------------------------+
+1 row in set (0.20 sec)
+```
+
+2つ以上の文字列を連結するにはCONCAT()関数を用いる。  
+例)
+```MySQL
+mysql> SELECT CONCAT("My","S","QL");
++-----------------------+
+| CONCAT("My","S","QL") |
++-----------------------+
+| MySQL                 |
++-----------------------+
+1 row in set (0.05 sec)
+```
+
+テーブルを指定して2つ以上のcolumnを結合したものを表示できる。  
+`SELECT CONCAT(column_name1,column_name2) FROM table_name`  
+例)
+```MySQL
+mysql> SELECT CONCAT (firstname ,lastname) FROM master_name;
++------------------------------+
+| CONCAT (firstname ,lastname) |
++------------------------------+
+| JohnSmith                    |
+| JaneSmith                    |
+| JimboJones                   |
+| AndySmith                    |
+| ChrisJones                   |
+| AnnaBell                     |
+| JimmyCarr                    |
+| AlbertSmith                  |
+| JohnDoe                      |
++------------------------------+
+9 rows in set (0.03 sec)
+```
+
+間に区切り文字を入れるときはCONCAT_WS()関数を使う。  
+`SELECT CONCAT_WS("words",column_name1,column_name2) FROM table_name`  
+例)
+```MySQL
+mysql> SELECT CONCAT_WS (" ",firstname ,lastname) FROM master_name;
++-------------------------------------+
+| CONCAT_WS (" ",firstname ,lastname) |
++-------------------------------------+
+| John Smith                          |
+| Jane Smith                          |
+| Jimbo Jones                         |
+| Andy Smith                          |
+| Chris Jones                         |
+| Anna Bell                           |
+| Jimmy Carr                          |
+| Albert Smith                        |
+| John Doe                            |
++-------------------------------------+
+9 rows in set (0.03 sec)
+```
+
+ASを使うことで結果フィールドを指定でき、長くなりがちな結果テーブルの幅を短くできる。  
+`SELECT CONCAT_WS("words",column_name1,column_name2) AS new_name FROM table_name`  
+例)
+```MySQL
+mysql> SELECT CONCAT_WS (" ",firstname ,lastname) AS fullname FROM master_name;
++--------------+
+| fullname     |
++--------------+
+| John Smith   |
+| Jane Smith   |
+| Jimbo Jones  |
+| Andy Smith   |
+| Chris Jones  |
+| Anna Bell    |
+| Jimmy Carr   |
+| Albert Smith |
+| John Doe     |
++--------------+
+9 rows in set (0.00 sec)
+```
 
 
 ###databaseとPHPの連携
