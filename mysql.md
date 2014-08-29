@@ -786,7 +786,7 @@ mysql> SELECT CONCAT (firstname ,lastname) FROM master_name;
 `SELECT CONCAT_WS("words",column_name1,column_name2) FROM table_name`  
 例)
 ```MySQL
-mysql> SELECT CONCAT_WS (" ",firstname ,lastname) FROM master_name;
+mysql> SELECT CONCAT_WS(" ",firstname ,lastname) FROM master_name;
 +-------------------------------------+
 | CONCAT_WS (" ",firstname ,lastname) |
 +-------------------------------------+
@@ -804,10 +804,10 @@ mysql> SELECT CONCAT_WS (" ",firstname ,lastname) FROM master_name;
 ```
 
 ASを使うことで結果フィールドを指定でき、長くなりがちな結果テーブルの幅を短くできる。  
-`SELECT CONCAT_WS("words",column_name1,column_name2) AS new_name FROM table_name`  
+#####`SELECT CONCAT_WS("words",column_name1,column_name2) AS new_name FROM table_name`  
 例)
 ```MySQL
-mysql> SELECT CONCAT_WS (" ",firstname ,lastname) AS fullname FROM master_name;
+mysql> SELECT CONCAT_WS(" ",firstname ,lastname) AS fullname FROM master_name;
 +--------------+
 | fullname     |
 +--------------+
@@ -823,6 +823,233 @@ mysql> SELECT CONCAT_WS (" ",firstname ,lastname) AS fullname FROM master_name;
 +--------------+
 9 rows in set (0.00 sec)
 ```
+
+####トリミングとパッティングの関数
+文字列の端から空白を削除する関数
+#####`SELECT RTRIM(" string ")`(右端の空白を削除する)  
+#####`SELECT LTRIM(" string ")`(左端の空白を削除する)  
+例)
+```MySQL
+mysql> SELECT RTRIM("   string   ");
++-----------------------+
+| RTRIM("   string   ") |
++-----------------------+
+|    string             |
++-----------------------+
+1 row in set (1.63 sec)
+
+mysql> SELECT LTRIM("   string   ");
++-----------------------+
+| LTRIM("   string   ") |
++-----------------------+
+| string                |
++-----------------------+
+1 row in set (0.05 sec)
+```
+
+削除したい文字を指示して削除する関数
+#####`SELWET TRIM(LEADING "word" FROM "string")`(先頭からwordを削除する)  
+#####`SELWET TRIM(TRAILING "word" FROM "string")`(末尾からwordを削除する)  
+#####`SELWET TRIM("word" FROM "string")`(両端からwordを削除する)  
+例)
+```MySQL
+mysql> SELECT TRIM(LEADING "x" FROM "xxxstringxxx");
++---------------------------------------+
+| TRIM(LEADING "x" FROM "xxxstringxxx") |
++---------------------------------------+
+| stringxxx                             |
++---------------------------------------+
+1 row in set (0.12 sec)
+
+mysql> SELECT TRIM(TRAILING "x" FROM "xxxstringxxx");
++----------------------------------------+
+| TRIM(TRAILING "x" FROM "xxxstringxxx") |
++----------------------------------------+
+| xxxstring                              |
++----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TRIM("x" FROM "xxxstringxxx");
++-------------------------------+
+| TRIM("x" FROM "xxxstringxxx") |
++-------------------------------+
+| string                        |
++-------------------------------+
+1 row in set (0.00 sec)
+```
+
+文字列に指定の文字を追加する関数(文字列、文字列の長さ、文字の順に指定する)
+#####`SELECT RPAD("string",int,"word");`  
+#####`SELECT LPAD("string",int,"word");`  
+例)
+```MySQL
+mysql> SELECT RPAD("string",10,"x");
++-----------------------+
+| RPAD("string",10,"x") |
++-----------------------+
+| stringxxxx            |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LPAD("string",10,"x");
++-----------------------+
+| LPAD("string",10,"x") |
++-----------------------+
+| xxxxstring            |
++-----------------------+
+1 row in set (0.00 sec)
+```
+
+####場所と位置の関数
+他の文字列の中から部分文字列を見つけるのに有効。  
+
+指定した部分文字列が対象文字列内で初めて出現する位置を返す関数、カウントは1から始まり、見つからない場合は0を返す。startは必須ではないが、startよりも前に部分文字列があると0を返す。  
+#####`SELECT LOCATE("words","string",start);`  
+例)
+```MySQL
+mysql> SELECT LOCATE("needle","haystackneedlehaystack");
++-------------------------------------------+
+| LOCATE("needle","haystackneedlehaystack") |
++-------------------------------------------+
+|                                         9 |
++-------------------------------------------+
+1 row in set (0.04 sec)
+
+mysql> SELECT LOCATE("needle","haystackneedlehaystack",8);
++---------------------------------------------+
+| LOCATE("needle","haystackneedlehaystack",8) |
++---------------------------------------------+
+|                                           9 |
++---------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LOCATE("needle","haystackneedlehaystack",10);
++----------------------------------------------+
+| LOCATE("needle","haystackneedlehaystack",10) |
++----------------------------------------------+
+|                                            0 |
++----------------------------------------------+
+1 row in set (0.00 sec)
+```
+
+####部分文字列の関数
+対象文字列から部分文字列を抽出する関数
+#####`SELECT SUBSTRING("string",start,length)`  
+例)
+```MySQL
+mysql> SELECT SUBSTRING("MySQL",2,3);
++------------------------+
+| SUBSTRING("MySQL",2,3) |
++------------------------+
+| ySQ                    |
++------------------------+
+1 row in set (0.04 sec)
+```
+
+文字列の橋の文字列を抽出する関数
+#####`SELECT LEFT("string",length)`(文字列の左端から取り出す)  
+#####`SELECT RIGHT("string",length))`(文字列の左端から取り出す)  
+例)
+```MySQL
+mysql> SELECT LEFT("MySQL",2);
++-----------------+
+| LEFT("MySQL",2) |
++-----------------+
+| My              |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT RIGHT("MySQL",2);
++------------------+
+| RIGHT("MySQL",2) |
++------------------+
+| QL               |
++------------------+
+1 row in set (0.00 sec)
+```
+
+####文字列変更の関数
+文字列の大文字小文字を変換する関数
+#####`SELECTLUCASE("string")`(大文字を小文字に変換する)  
+#####`SELECT UCASE("string")`(小文字を大文字に変換する)  
+例)
+```MySQL
+mysql> SELECT LCASE("MySQL");
++----------------+
+| LCASE("MySQL") |
++----------------+
+| mysql          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT UCASE("MySQL");
++----------------+
+| UCASE("MySQL") |
++----------------+
+| MYSQL          |
++----------------+
+1 row in set (0.04 sec)
+```
+
+テーブルのcolumnを指定するときは引用符を使用しないことに注意  
+例)
+```MySQL
+mysql> SELECT UCASE(lastname) FROM master_name;
++-----------------+
+| UCASE(lastname) |
++-----------------+
+| SMITH           |
+| SMITH           |
+| JONES           |
+| SMITH           |
+| JONES           |
+| BELL            |
+| CARR            |
+| SMITH           |
+| DOE             |
++-----------------+
+9 rows in set (0.96 sec)
+```
+
+指定した文字列を指定回数だけ繰り返す関数
+#####`SELECT REPEAT("string",times)`  
+例)
+```MySQL
+mysql> SELECT REPEAT("bowwow",4);
++--------------------------+
+| REPEAT("bowwow",4)       |
++--------------------------+
+| bowwowbowwowbowwowbowwow |
++--------------------------+
+1 row in set (0.00 sec)
+```
+
+ある文字列内(string)の指定した文字列(word1)をずべて別の文字列(word2)で置き換える関数
+#####`SELECT REPLACE("string","word1","word2")`  
+例)
+```MySQL
+mysql> SELECT REPLACE("bowwowbowwowbowwowbowwow","wow","WOW");
++-------------------------------------------------+
+| REPLACE("bowwowbowwowbowwowbowwow","wow","WOW") |
++-------------------------------------------------+
+| bowWOWbowWOWbowWOWbowWOW                        |
++-------------------------------------------------+
+1 row in set (0.00 sec)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ###databaseとPHPの連携
