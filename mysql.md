@@ -623,7 +623,7 @@ mysql> select * from fruit;
 元のレコードと主キーが一致する新しいれ子レコードを入れ替えるときに使用する  
 `REPLACE INTO table_name (column_list ) VALUES (column_values)`  
 例)
-``MySQL
+```MySQL
 mysql> select * from grocery_inventory;
 +----+-------------------------+-------------------------+------------+---------+
 | id | item_name               | item_desc               | item_price | curr_qty|
