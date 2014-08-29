@@ -297,28 +297,83 @@ mysql> SELECT * FROM grocery_inventory WHERE item_name LIKE "A%";
 
 ###複数テーブルからの選択
 SELECTステートメントで複数のテーブルから選択参照できる。仮にfruitとcolorという2つのテーブルがあり、idを基準に結合して表示すことを考える。  
+例)
 ```MySQL
-+----+-----------+ 		+----+-----------+  
-| id | fruitname | 		| id | colorname |  
-+----+-----------+ 		+----+-----------+  
-|  1 | apple     | 		|  1 | red       |  
-|  2 | orange    | 		|  2 | orange    |  
-|  3 | grape     | 		|  3 | purple    |  
-|  4 | banana    | 		|  4 | yellow    |  
-+----+-----------+ 		+----+-----------+  
++----+-----------+		+----+-----------+		+----+-----------+-----------+
+| id | fruitname |		| id | colorname |		| id | fruitname | colorname |
++----+-----------+		+----+-----------+		+----+-----------+-----------+
+|  1 | apple     |		|  1 | red       |		|  1 | apple     | red       |
+|  2 | orange    |	+	|  2 | orange    |	=	|  2 | orange    | orange    |
+|  3 | grape     |		|  3 | purple    |		|  3 | grape     | purple    |
+|  4 | banana    |		|  4 | yellow    |		|  4 | banana    | yellow    |
++----+-----------+		+----+-----------+		+----+-----------+-----------+
 ```
 
+単純に「,」で2つのtable_nameを区切って`SELECT * FROM fruit,color`とすると、求めるのとは異なる結果が表示される。  
+例)
+```MySQL
+mysql> SELECT * FROM fruit,color;
++----+-----------+----+-----------+
+| id | fruitname | id | colorname |
++----+-----------+----+-----------+
+|  1 | apple     |  1 | red       |
+|  2 | orange    |  1 | red       |
+|  3 | grape     |  1 | red       |
+|  4 | banana    |  1 | red       |
+|  1 | apple     |  2 | orange    |
+|  2 | orange    |  2 | orange    |
+|  3 | grape     |  2 | orange    |
+|  4 | banana    |  2 | orange    |
+|  1 | apple     |  3 | purple    |
+|  2 | orange    |  3 | purple    |
+|  3 | grape     |  3 | purple    |
+|  4 | banana    |  3 | purple    |
+|  1 | apple     |  4 | yellow    |
+|  2 | orange    |  4 | yellow    |
+|  3 | grape     |  4 | yellow    |
+|  4 | banana    |  4 | yellow    |
++----+-----------+----+-----------+
+16 rows in set (0.04 sec)
+```
 
+ここからID_FIELDの一致するfruitnameとcolornameのみを取り出すためには、WHERE構文を使ってfruitとcolorのidが一致するという条件を指定する。ここで必要な両方のtableに共通するfieldを正しく指定するには、  
+`table_name.field_name`  
+と記述すればよい。  
+例)
+```MySQL
+mysql> SELECT fruitname,colorname FROM fruit,color WHERE fruit.id=color.id;
++-----------+-----------+
+| fruitname | colorname |
++-----------+-----------+
+| apple     | red       |
+| orange    | orange    |
+| grape     | purple    |
+| banana    | yellow    |
++-----------+-----------+
+4 rows in set (0.06 sec)
+```
 
+しかし、idも含めて表示する際、単にidを加えるだけではerrorを吐き出す。これは同じ名前のcolumnが両方のtableに含まれ、曖昧性が残るためである。  
+例)
+```MySQL
+mysql> SELECT id,fruitname,colorname FROM fruit,color WHERE fruit.id=colorid;
+ERROR 1052 (23000): Column 'id' in field list is ambiguous
+```
 
-
-
-
-
-単純に「,」で2つのtable_nameを区切って
-`SELECT * FROM fruit,color`  
-とすると、
-
+そこで、`table_name.field_name` をもう一度考え、fruit.idまたはcolor.idに注目すればよい。  
+例)
+```MySQL
+mysql> SELECT fruit.id,fruitname,colorname FROM fruit,color WHERE fruit.id=color.id;
++----+-----------+-----------+
+| id | fruitname | colorname |
++----+-----------+-----------+
+|  1 | apple     | red       |
+|  2 | orange    | orange    |
+|  3 | grape     | purple    |
+|  4 | banana    | yellow    |
++----+-----------+-----------+
+4 rows in set (0.00 sec)
+```
 
 
 ###record変更
