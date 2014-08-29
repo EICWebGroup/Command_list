@@ -533,8 +533,8 @@ Query OK, 1 row affected, 1 warning (0.08 sec)
 ```
 
 
-###データ更新
-* UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
+###レコードのデータ更新
+`UPDATE table_name SET column_name1="new_value1",column_name2="new_value2" [WHERE some_condition_is_true];`
 
 
 ####データ削除
