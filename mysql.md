@@ -455,7 +455,24 @@ mysql> SELECT firstname,lastname,email FROM master_name RIGHT JOIN email ON mast
 
 ####サブクエリ
 別のSQLステートメントに含まれるSELECTステートメントのこと。これにより複雑なJOINが必要なくなり、プログラミングではループ内で複数のクエリを含めることが不要になる。
-#####`SELECT expressions_and_columns FROM table_name WHERE somecolumn = (SUBQUERY);`
+#####`SELECT expressions_and_columns FROM table_name WHERE somecolumn = (SUBQUERY);`  
+これはまた、UPDATEやDELETEステートメントにも使われる。  
+#####`UPDATE table_name SET somecolumn = "something" WHERE somecoolumn = (SUBQUERY);`  
+#####`DELETE FROM table_name WHERE somecolumn = (SUBQUERY);`  
+サブクエリは必ず()で括る。  
+例えば、IN句は条件をまとめることができ、ORで書き換えられる。  
+例)　emailテーブルに登録されているユーザーをmaster_nameテーブルからSELECTする
+```
+mysql> SELECT firstname,lastname FROM master_name WHERE name_id IN (SELECT name_id FROM email);
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| Jane      | Smith    |
+| Anna      | Bell     |
+| John      | Doe      |
++-----------+----------+
+3 rows in set (0.00 sec)
+```
 
 
 
