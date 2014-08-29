@@ -297,6 +297,7 @@ mysql> SELECT * FROM grocery_inventory WHERE item_name LIKE "A%";
 
 ###•¡”ƒe[ƒuƒ‹‚©‚ç‚Ì‘I‘ğ
 SELECTƒXƒe[ƒgƒƒ“ƒg‚Å•¡”‚Ìƒe[ƒuƒ‹‚©‚ç‘I‘ğQÆ‚Å‚«‚éB‰¼‚Éfruit‚Æcolor‚Æ‚¢‚¤2‚Â‚Ìƒe[ƒuƒ‹‚ª‚ ‚èAid‚ğŠî€‚ÉŒ‹‡‚µ‚Ä•\¦‚·‚±‚Æ‚ğl‚¦‚éB  
+```MySQL
 +----+-----------+ 		+----+-----------+  
 | id | fruitname | 		| id | colorname |  
 +----+-----------+ 		+----+-----------+  
@@ -305,7 +306,7 @@ SELECTƒXƒe[ƒgƒƒ“ƒg‚Å•¡”‚Ìƒe[ƒuƒ‹‚©‚ç‘I‘ğQÆ‚Å‚«‚éB‰¼‚Éfruit‚Æcolor‚Æ‚¢‚¤2‚
 |  3 | grape     | 		|  3 | purple    |  
 |  4 | banana    | 		|  4 | yellow    |  
 +----+-----------+ 		+----+-----------+  
-
+```
 
 
 
