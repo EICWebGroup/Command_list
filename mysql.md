@@ -360,7 +360,7 @@ mysql> SELECT id,fruitname,colorname FROM fruit,color WHERE fruit.id=colorid;
 ERROR 1052 (23000): Column 'id' in field list is ambiguous
 ```
 
-そこで、`table_name.field_name` をもう一度考え、fruit.idまたはcolor.idに注目すればよい。  
+そこで、`table_name.field_name` をもう一度考え、fruit.idまたはcolor.idを用いればよい。  
 例)
 ```MySQL
 mysql> SELECT fruit.id,fruitname,colorname FROM fruit,color WHERE fruit.id=color.id;
@@ -374,6 +374,44 @@ mysql> SELECT fruit.id,fruitname,colorname FROM fruit,color WHERE fruit.id=color
 +----+-----------+-----------+
 4 rows in set (0.00 sec)
 ```
+
+####JOINの使用
+テーブルが結合された順を参照して結果を表示する。様々な種類のJOINがあるが、規定はINNER JOINで明示的に記述されない。  
+これをあえて明示するときはWHEREのかわりにONを使い、次のような構文になる。  
+`SELECT column_name1,column_name2 FROM table_name1 INNER JOIN table_name2 ON table_name1.field_name = table_name2.field_name;`    
+例)
+```MySQL
+mysql> SELECT fruitname,colorname FROM fruit INNER JOIN color ON fruit.id=color.id;
++-----------+-----------+
+| fruitname | colorname |
++-----------+-----------+
+| apple     | red       |
+| orange    | orange    |
+| grape     | purple    |
+| banana    | yellow    |
++-----------+-----------+
+4 rows in set (0.00 sec)
+```
+
+他にも基本的な句としてLEFT JOINやRIGHT JOINが使われる。これをmaster_nameとemailの2つのテーブルを使って説明する。  
+例)
+```MySQL
++---------+-----------+----------+		+---------+-----------------+
+| name_id | firstname | lastname |		| name_id | email           |
++---------+-----------+----------+		+---------+-----------------+
+|       1 | John      | Smith    |		|       1 | jsmith@jsmith.c |
+|       2 | Jane      | Smith    |		|       2 | annabell@aol.co |
+|       3 | Jimbo     | Jones    |		|       3 | jdoe@yahoo.com  |
+|       4 | Andy      | Smith    |		+---------+-----------------+
+|       5 | Chris     | Jones    |		
+|       6 | Anna      | Bell     |		
+|       7 | Jimmy     | Carr     |		
+|       8 | Albert    | Smith    |		
+|       9 | John      | Doe      |		
++---------+-----------+----------+		
+```
+
+
 
 
 ###record変更
