@@ -533,12 +533,208 @@ Query OK, 1 row affected, 1 warning (0.08 sec)
 ```
 
 
+###作成済みのテーブルにcolumnを追加する
+`ALTER TABLE tbl_name ADD [COLUMN] column_definition;`  
+例)　fruitにstatusを追加
+```MySQL
+mysql> ALTER TABLE fruit ADD status varchar(6);
+Query OK, 0 rows affected (3.37 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc fruit;
++-----------+------------+------+-----+---------+----------------+
+| Field     | Type       | Null | Key | Default | Extra          |
++-----------+------------+------+-----+---------+----------------+
+| id        | int(11)    | NO   | PRI | NULL    | auto_increment |
+| fruitname | varchar(6) | YES  |     | NULL    |                |
+| status    | varchar(6) | YES  |     | NULL    |                |
++-----------+------------+------+-----+---------+----------------+
+3 rows in set (0.23 sec)
+```
+
+
 ###レコードのデータ更新
-`UPDATE table_name SET column_name1="new_value1",column_name2="new_value2" [WHERE some_condition_is_true];`
+UPDATEは既存のレコード(セット)で1つ以上のcolumnの内容を修正するときに使用する。次のテーブルを例に挙げる。  
+例)
+```MySQL
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  2 | orange    | rotten |
+|  3 | grape     | ripe   |
+|  4 | banana    | rotten |
++----+-----------+--------+
+```
+
+`UPDATE table_name SET column_name1="new_value1",column_name2="new_value2" [WHERE some_condition_is_true];`  
+WHERE句は必ずしも必要ではないが、これがないとすべてのcolumnが更新されてしまう。  
+例)
+```MySQL
+mysql> UPDATE fruit SET status = "ripe";
+Query OK, 2 rows affected (0.10 sec)
+Rows matched: 4  Changed: 2  Warnings: 0
+
+mysql> select * from fruit;
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  2 | orange    | ripe   |
+|  3 | grape     | ripe   |
+|  4 | banana    | ripe   |
++----+-----------+--------+
+4 rows in set (0.00 sec)
+```
+
+####条件付きのUPDATE
+全てのcolumnではなく、特定のcolumnを更新したいときにはWHERE句を使う。  
+例)　grapeの綴りが間違ってgrrapeになっていて、これを修正する
+```MySQL
+mysql> select * from fruit;
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  2 | orange    | ripe   |
+|  3 | grrape    | ripe   |
+|  4 | banana    | ripe   |
++----+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE fruit SET fruitname = "grape" WHERE fruitname="grrape";
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from fruit;
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  2 | orange    | ripe   |
+|  3 | grape     | ripe   |
+|  4 | banana    | ripe   |
++----+-----------+--------+
+4 rows in set (0.03 sec)
+```
 
 
-####データ削除
-* DELETE FROM テーブル名 [WHERE 条件式];
+###REPLACEコマンドの使用
+元のレコードと主キーが一致する新しいれ子レコードを入れ替えるときに使用する  
+`REPLACE INTO table_name (column_list ) VALUES (column_values)`  
+例)
+``MySQL
+mysql> select * from grocery_inventory;
++----+-------------------------+-------------------------+------------+---------+
+| id | item_name               | item_desc               | item_price | curr_qty|
++----+-------------------------+-------------------------+------------+---------|
+|  1 | Apples                  | Beautiful, ripe apples. |       0.25 |     1000|
+|  2 | Bunches of Grapes       | Sheedless grapes        |       2.99 |      500|
+|  3 | Bottled Water (6-pack)  | 500ml spring water.     |       2.29 |      250|
+|  4 | Bottled Water (12-pack) | 500ml spring water.     |       4.49 |      500|
++----+-------------------------+-------------------------+------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> REPLACE INTO grocery_inventory VALUES (1,"Granny Smith Apples","Sweet","0.50",1000);
+Query OK, 2 rows affected (0.22 sec)
+
+mysql> select * from grocery_inventory;
++----+-------------------------+---------------------+------------+----------+
+| id | item_name               | item_desc           | item_price | curr_qty |
++----+-------------------------+---------------------+------------+----------+
+|  1 | Granny Smith Apples     | Sweet               |        0.5 |     1000 |
+|  2 | Bunches of Grapes       | Sheedless grapes    |       2.99 |      500 |
+|  3 | Bottled Water (6-pack)  | 500ml spring water. |       2.29 |      250 |
+|  4 | Bottled Water (12-pack) | 500ml spring water. |       4.49 |      500 |
++----+-------------------------+---------------------+------------+----------+
+4 rows in set (0.00 sec)
+```
+
+ここで1つのレコードしか変更していないのに「2 rows affected」とあるのは、はじめのレコードを削除した後に新しいレコードを挿入するという、2つの操作を行っているためである。  
+
+
+###DELETEコマンドの使用
+`DELETE FROM table_name [WHERE some_condition_is_true] [LIMIT rows]`  
+DELETEコマンドではcolumnを指定せず、単体ではすべてのレコードを削除する。  
+例)
+```MySQL
+mysql> SELECT * FROM fruit;
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  2 | orange    | rotten |
+|  3 | grape     | ripe   |
+|  4 | banana    | rotten |
++----+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> DELETE FROM fruit;
+Query OK, 4 rows affected (0.04 sec)
+
+mysql> select * from fruit;
+Empty set (0.00 sec)
+```
+
+
+####条件付きのDELETE
+WHEREなどで条件を指定すれば任意のレコードを削除する。  
+例)
+```MySQL
+mysql> SELECT * FROM fruit;
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  2 | orange    | rotten |
+|  3 | grape     | ripe   |
+|  4 | banana    | rotten |
++----+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> DELETE FROM fruit WHERE status = "rotten";
+Query OK, 2 rows affected (0.09 sec)
+
+mysql> SELECT * FROM fruit;
++----+-----------+--------+
+| id | fruitname | status |
++----+-----------+--------+
+|  1 | apple     | ripe   |
+|  3 | grape     | ripe   |
++----+-----------+--------+
+2 rows in set (0.00 sec)
+```
+
+また、、ORDER BYで順序を整理してから、LIMITで制限して削除することもできる。  
+例)　アクセスが最新のレコードを削除
+```MySQL
+mysql> select * from access_log;
++----+---------------------+----------+
+| id | date_accessed       | username |
++----+---------------------+----------+
+|  1 | 2012-01-06 06:09:13 | johndoe  |
+|  2 | 2012-01-06 07:08:42 | janedoe  |
+|  3 | 2012-01-06 09:03:19 | jsmith   |
+|  4 | 2012-01-06 10:06:59 | mikew    |
++----+---------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> DELETE FROM access_log ORDER BY date_accessed DESC LIMIT 1;
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from access_log;
++----+---------------------+----------+
+| id | date_accessed       | username |
++----+---------------------+----------+
+|  1 | 2012-01-06 06:09:13 | johndoe  |
+|  2 | 2012-01-06 07:08:42 | janedoe  |
+|  3 | 2012-01-06 09:03:19 | jsmith   |
++----+---------------------+----------+
+3 rows in set (0.00 sec)
+```
+
+
+###MySQLでよく利用される文字列関数
 
 
 ###databaseとPHPの連携
