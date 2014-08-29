@@ -475,8 +475,6 @@ mysql> SELECT firstname,lastname FROM master_name WHERE name_id IN (SELECT name_
 ```
 
 
-
-
 ###record変更
 ####テーブルにレコードのデータ挿入
 #####`INSERT INTO table_name (column_list) VALUES (column values);`
@@ -521,9 +519,23 @@ mysql> INSERT INTO grocery_inventory VALUES ("NULL","Bottled Water (12-pack)","5
 Query OK, 1 row affected, 1 warning (0.08 sec)
 ```
 
+以上の一連の作業を行えば、次のようなテーブルが得られる。  
+例)
+```MySQL
++----+-------------------------+-------------------------+------------+---------+
+| id | item_name               | item_desc               | item_price | curr_qty|
++----+-------------------------+-------------------------+------------+---------|
+|  1 | Apples                  | Beautiful, ripe apples. |       0.25 |     1000|
+|  2 | Bunches of Grapes       | Sheedless grapes        |       2.99 |      500|
+|  3 | Bottled Water (6-pack)  | 500ml spring water.     |       2.29 |      250|
+|  4 | Bottled Water (12-pack) | 500ml spring water.     |       4.49 |      500|
++----+-------------------------+-------------------------+------------+---------+
+```
 
-####データ更新
+
+###データ更新
 * UPDATE テーブル名 SET カラム名=`値`[, カラム名=`値`, ... ] WHERE 条件式;
+
 
 ####データ削除
 * DELETE FROM テーブル名 [WHERE 条件式];
