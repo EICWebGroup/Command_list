@@ -413,7 +413,7 @@ mysql> SELECT fruitname,colorname FROM fruit INNER JOIN color ON fruit.id=color.
 +---------+-----------+----------+
 ```
 
-LEFT JOINの構文はINNERと同様、次のようになる。このとき最初に指定したテーブルの要素数に合わせて後のテーブルの要素を調整する。足りない場合はからの値が表示される。  
+LEFT JOINの構文はINNERと同様、次のようになる。このとき最初に指定したテーブルの要素数に合わせて後のテーブルの要素を調整する。足りない場合は空の値が表示される。  
 ```
 SELECT column_name1,column_name2 FROM table_name1 LEFT JOIN table_name2 ON table_name1.field_name = table_name2.field_name;
 ```
@@ -436,7 +436,7 @@ mysql> SELECT firstname,lastname,email FROM master_name LEFT JOIN email ON maste
 9 rows in set (0.00 sec)
 ```
 
-RIGHT JOINの構文はLEFTと同様、次のようになる。このとき後に指定したテーブルの要素数に合わせて前のテーブルの要素を調整する。足りない場合はからの値が表示される。  
+RIGHT JOINの構文はLEFTと同様、次のようになる。このとき後に指定したテーブルの要素数に合わせて前のテーブルの要素を調整する。足りない場合は空の値が表示される。  
 ```
 SELECT column_name1,column_name2 FROM table_name1 LEFT JOIN table_name2 ON table_name1.field_name = table_name2.field_name;
 ```
@@ -453,7 +453,9 @@ mysql> SELECT firstname,lastname,email FROM master_name RIGHT JOIN email ON mast
 3 rows in set (0.05 sec)
 ```
 
-
+####サブクエリ
+別のSQLステートメントに含まれるSELECTステートメントのこと。これにより複雑なJOINが必要なくなり、プログラミングではループ内で複数のクエリを含めることが不要になる。
+#####`SELECT expressions_and_columns FROM table_name WHERE somecolumn = (SUBQUERY);`
 
 
 
