@@ -378,7 +378,9 @@ mysql> SELECT fruit.id,fruitname,colorname FROM fruit,color WHERE fruit.id=color
 ####JOINの使用
 テーブルが結合された順を参照して結果を表示する。様々な種類のJOINがあるが、規定はINNER JOINで明示的に記述されない。  
 これをあえて明示するときはWHEREのかわりにONを使い、次のような構文になる。  
-`SELECT column_name1,column_name2 FROM table_name1 INNER JOIN table_name2 ON table_name1.field_name = table_name2.field_name;`    
+```
+SELECT column_name1,column_name2 FROM table_name1 INNER JOIN table_name2 ON table_name1.field_name = table_name2.field_name;`
+```
 例)
 ```MySQL
 mysql> SELECT fruitname,colorname FROM fruit INNER JOIN color ON fruit.id=color.id;
@@ -393,23 +395,65 @@ mysql> SELECT fruitname,colorname FROM fruit INNER JOIN color ON fruit.id=color.
 4 rows in set (0.00 sec)
 ```
 
-他にも基本的な句としてLEFT JOINやRIGHT JOINが使われる。これをmaster_nameとemailの2つのテーブルを使って説明する。  
+他にも基本的な句としてLEFT JOINやRIGHT JOINが使われる。これをmaster_nameとemailの2つのテーブルを使い説明する。  
 例)
 ```MySQL
-+---------+-----------+----------+		+---------+-----------------+
-| name_id | firstname | lastname |		| name_id | email           |
-+---------+-----------+----------+		+---------+-----------------+
-|       1 | John      | Smith    |		|       1 | jsmith@jsmith.c |
-|       2 | Jane      | Smith    |		|       2 | annabell@aol.co |
-|       3 | Jimbo     | Jones    |		|       3 | jdoe@yahoo.com  |
-|       4 | Andy      | Smith    |		+---------+-----------------+
-|       5 | Chris     | Jones    |		
-|       6 | Anna      | Bell     |		
-|       7 | Jimmy     | Carr     |		
-|       8 | Albert    | Smith    |		
-|       9 | John      | Doe      |		
-+---------+-----------+----------+		
++---------+-----------+----------+		+---------+-------------------+
+| name_id | firstname | lastname |		| name_id | email             |
++---------+-----------+----------+		+---------+-------------------+
+|       1 | John      | Smith    |		|       2 | jsmith@jsmith.com |
+|       2 | Jane      | Smith    |		|       6 | annabell@aol.com  |
+|       3 | Jimbo     | Jones    |		|       9 | jdoe@yahoo.com    |
+|       4 | Andy      | Smith    |		+---------+-------------------+
+|       5 | Chris     | Jones    |
+|       6 | Anna      | Bell     |
+|       7 | Jimmy     | Carr     |
+|       8 | Albert    | Smith    |
+|       9 | John      | Doe      |
++---------+-----------+----------+
 ```
+
+LEFT JOINの構文はINNERと同様、次のようになる。このとき最初に指定したテーブルの要素数に合わせて後のテーブルの要素を調整する。足りない場合はからの値が表示される。  
+```
+SELECT column_name1,column_name2 FROM table_name1 LEFT JOIN table_name2 ON table_name1.field_name = table_name2.field_name;
+```
+例)
+```MySQL
+mysql> SELECT firstname,lastname,email FROM master_name LEFT JOIN email ON master_name.name_id = email.name_id;
++-----------+----------+-------------------+
+| firstname | lastname | email             |
++-----------+----------+-------------------+
+| John      | Smith    | NULL              |
+| Jane      | Smith    | jsmith@jsmith.com |
+| Jimbo     | Jones    | NULL              |
+| Andy      | Smith    | NULL              |
+| Chris     | Jones    | NULL              |
+| Anna      | Bell     | annabell@aol.com  |
+| Jimmy     | Carr     | NULL              |
+| Albert    | Smith    | NULL              |
+| John      | Doe      | jdoe@yahoo.com    |
++-----------+----------+-------------------+
+9 rows in set (0.00 sec)
+```
+
+RIGHT JOINの構文はLEFTと同様、次のようになる。このとき後に指定したテーブルの要素数に合わせて前のテーブルの要素を調整する。足りない場合はからの値が表示される。  
+```
+SELECT column_name1,column_name2 FROM table_name1 LEFT JOIN table_name2 ON table_name1.field_name = table_name2.field_name;
+```
+例)
+```MySQL
+mysql> SELECT firstname,lastname,email FROM master_name RIGHT JOIN email ON master_name.name_id = email.name_id;
++-----------+----------+-------------------+
+| firstname | lastname | email             |
++-----------+----------+-------------------+
+| Jane      | Smith    | jsmith@jsmith.com |
+| Anna      | Bell     | annabell@aol.com  |
+| John      | Doe      | jdoe@yahoo.com    |
++-----------+----------+-------------------+
+3 rows in set (0.05 sec)
+```
+
+
 
 
 
