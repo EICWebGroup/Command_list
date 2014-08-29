@@ -296,7 +296,27 @@ mysql> SELECT * FROM grocery_inventory WHERE item_name LIKE "A%";
 
 
 ###複数テーブルからの選択
+SELECTステートメントで複数のテーブルから選択参照できる。仮にfruitとcolorという2つのテーブルがあり、idを基準に結合して表示すことを考える。  
++----+-----------+		+----+-----------+
+| id | fruitname |		| id | colorname |
++----+-----------+		+----+-----------+
+|  1 | apple     |		|  1 | red       |
+|  2 | orange    |		|  2 | orange    |
+|  3 | grape     |		|  3 | purple    |
+|  4 | banana    |		|  4 | yellow    |
++----+-----------+		+----+-----------+
 
+
+
+
+
+
+
+
+
+単純に「,」で2つのtable_nameを区切って
+`SELECT * FROM fruit,color`  
+とすると、
 
 
 
