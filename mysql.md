@@ -1038,9 +1038,129 @@ mysql> SELECT REPLACE("bowwowbowwowbowwowbowwow","wow","WOW");
 ```
 
 
+###MySQLでの日付関数と時刻関数の使用
+####日付の使用
+日付の曜日インデクスを返す関数
+DAYOFWEEK()関数の週の開始日は日曜日で、位置は1、最終日は土曜日で、位置は7となる。  
+#####`SELECT DAYOFWEEK("YYYY-MM-DD")`  
+WEEKDAY()関数の週の開始日は月曜日で、位置は0、最終日は日曜日で、位置は6となる。  
+#####`SELECT WEEKDAY("YYYY-MM-DD")`  
+例)
+```MySQL
+mysql> SELECT DAYOFWEEK("2012-01-09");
++-------------------------+
+| DAYOFWEEK("2012-01-09") |
++-------------------------+
+|                       2 |
++-------------------------+
+1 row in set (0.00 sec)
 
+mysql> SELECT WEEKDAY("2012-01-09");
++-----------------------+
+| WEEKDAY("2012-01-09") |
++-----------------------+
+|                     0 |
++-----------------------+
+1 row in set (0.10 sec)
+```
 
+DAYOFMONTH()やDAYOFYEAR()も同様にそれぞれの日付を返す。  
+#####`SELECT DAYOFMONTH("YYYY-MM-DD")`  
+#####`SELECT DAYOFYEAR("YYYY-MM-DD")`  
+例)
+```MySQL
+mysql> SELECT DAYOFMONTH("2012-02-09");
++--------------------------+
+| DAYOFMONTH("2012-02-09") |
++--------------------------+
+|                        9 |
++--------------------------+
+1 row in set (0.05 sec)
 
+mysql> SELECT DAYOFYEAR("2012-02-09");
++-------------------------+
+| DAYOFYEAR("2012-02-09") |
++-------------------------+
+|                      40 |
++-------------------------+
+1 row in set (0.00 sec)
+```
+
+指定した日付の曜日名を返す関数
+#####`SELECT DAYNAME("YYYY-MM-DD")`  
+例)
+```MySQL
+mysql> SELECT DAYNAME("2012-01-09");
++-----------------------+
+| DAYNAME("2012-01-09") |
++-----------------------+
+| Monday                |
++-----------------------+
+1 row in set (0.03 sec)
+```
+
+####月及び年の使用
+指定した日付の月を返す関数  
+#####`SELECT MONTH("YYYY-MM-DD")`  
+日付の月の名前を返す関数
+#####`SELECT MONTHNAME("YYYY-MM-DD")`  
+例)
+```MySQL
+mysql> SELECT MONTH("2012-01-09"),MONTHNAME("2012-01-09");
++---------------------+-------------------------+
+| MONTH("2012-01-09") | MONTHNAME("2012-01-09") |
++---------------------+-------------------------+
+|                   1 | January                 |
++---------------------+-------------------------+
+1 row in set (0.00 sec)
+```
+
+テーブルに対してmONTHNAME()関数を使うと正しく処理されても、同じ月名が繰り返すことがある。このときDISTINCTを使うと繰り返しを排除できる。  
+例)
+```MySQL
+mysql> SELECT * FROM access_log;
++----+---------------------+----------+
+| id | date_accessed       | username |
++----+---------------------+----------+
+|  1 | 2012-01-06 06:09:13 | johndoe  |
+|  2 | 2012-01-06 07:08:42 | janedoe  |
+|  3 | 2012-01-06 09:03:19 | jsmith   |
++----+---------------------+----------+
+3 rows in set (0.03 sec)
+
+mysql> SELECT MONTHNAME(date_accessed) FROM access_log;
++--------------------------+
+| MONTHNAME(date_accessed) |
++--------------------------+
+| January                  |
+| January                  |
+| January                  |
++--------------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT MONTHNAME(date_accessed) FROM access_log;
++--------------------------+
+| MONTHNAME(date_accessed) |
++--------------------------+
+| January                  |
++--------------------------+
+1 row in set (0.07 sec)
+```
+
+年を返す関数
+#####`SELECT YEAR("YYYY-MM-DD")`  
+例)
+```MySQL
+mysql> SELECT DISTINCT YEAR(date_accessed) FROM access_log;
++---------------------+
+| YEAR(date_accessed) |
++---------------------+
+|                2012 |
++---------------------+
+1 row in set (0.03 sec)
+```
+
+####週の使用
 
 
 
