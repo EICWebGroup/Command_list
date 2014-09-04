@@ -534,7 +534,7 @@ Query OK, 1 row affected, 1 warning (0.08 sec)
 
 
 ###作成済みのテーブルにcolumnを追加する
-`ALTER TABLE tbl_name ADD [COLUMN] column_definition;`  
+#####`ALTER TABLE tbl_name ADD [COLUMN] column_definition;`  
 例)　fruitにstatusを追加
 ```MySQL
 mysql> ALTER TABLE fruit ADD status varchar(6);
@@ -551,6 +551,9 @@ mysql> desc fruit;
 +-----------+------------+------+-----+---------+----------------+
 3 rows in set (0.23 sec)
 ```
+
+###作成済みのテーブルからcolumnを削除する
+#####`ALTER TABLE tbl_name DROP COLUMN col_name;`
 
 
 ###レコードのデータ更新
