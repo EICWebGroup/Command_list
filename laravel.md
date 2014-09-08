@@ -6,14 +6,14 @@
 * viewフォルダの中の任意のファイル
 * modelフォルダの中の任意のファイル
 
-1. route.php
+1.route.php
 次のようにしてHomeController.phpの関数に移動。ここれ「@」以降が関数名になる。  
 「'/'」はブラウザの「http://localhost:8000/」で確認
 ```php
 Route::get('/','HomeController@showWelcome');
 ```
 
-2. HomeController.php
+2.HomeController.php
 次の例では「View::make」を使ってsample.phpファイルにmy_commentsの変数を渡す。
 ```php
 public function showWelcome()
@@ -23,7 +23,7 @@ public function showWelcome()
 	return View::make('sample',["my_comments"=>$comments]);
 }
 
-3. sample.php
+3.sample.php
 ブラウザに表示するHTMLをくむ。  
 formで送信するデータは、route.phpに
 ```php
@@ -31,7 +31,7 @@ Route::post('/','HomeController@postForm');
 ```
 などと記述しておくことで、HomeController.phpの関数へ送られる。
 
-4. HomeController.php
+4.HomeController.php
 ```php
 public function postForm(){
 
