@@ -7,6 +7,7 @@
 
 ###Homestead.yamlの変更
 * cmdでDocumenta\Homestead移動し、vagrant provisionと入力する
+* vagrant provision で設定を反映する
 
 ###ファイルの保存と参照
 * ファイルはドキュメント\Codeに保存してバーチャルコンピュータと共有する
