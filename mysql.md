@@ -1432,7 +1432,7 @@ mysql> SELECT FROM_UNIXTIME("126025200");
 
 
 ###table‚ÌŒ‹‡
-SELECT * FROM table_name1 INNER JOIN table_name2 ON table_name1.column_name1 = table_name2.column_name2
+SELECT table_name1.column_name1,table_name2.column_name2 FROM table_name1 INNER JOIN table_name2 ON table_name1.column_name1 = table_name2.column_name2
 —á)  
 ```MySQL
 mysql> SELECT * FROM snippet_table INNER JOIN tag_table ON snippet_table.tags_id = tag_table.id;
