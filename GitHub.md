@@ -41,3 +41,7 @@ UsernameとPasswordを入力する
 フォルダを作成する  
 git　cd でレポジトリに変えたいフォルダまで移動する  
 git init  
+
+#####レポジトリのダウンロード
+`git pull URL master`  
+`composer dump-autoload`
