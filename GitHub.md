@@ -37,6 +37,12 @@ git commit -m "メッセージ"
 git push URL master  
 UsernameとPasswordを入力する
 
+#####4.GitHubからダウンロードする(pull)
+cmdでgit pull URL master
+app.phpで作者をコメントアウト
+puttyでcomposer update
+composer.jsonの作者情報をコピーして、づんろーど、インストールが終わったら、コメントアウトを外す
+
 レポジトリの作成方法  
 フォルダを作成する  
 git　cd でレポジトリに変えたいフォルダまで移動する  
@@ -45,3 +51,9 @@ git init
 #####レポジトリのダウンロード
 `git pull URL master`  
 `composer dump-autoload`
+
+###branch
+`git branch …branchの一覧表
+`git checkout -b NAME …新規のbranch作成
+`git checkout NAME …branchの変更
+`git branch -D NAME …branchの削除
